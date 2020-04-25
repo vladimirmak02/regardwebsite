@@ -6,10 +6,7 @@
     <title>Regard</title>
     <link rel="stylesheet" href="resetStyle.css" />
     <link rel="stylesheet" href="style.css" />
-    <script
-      src="https://kit.fontawesome.com/48cbd93de7.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/48cbd93de7.js"></script>
     <script src="/script.js" defer></script>
   </head>
   <body>
@@ -17,24 +14,36 @@
       <a href="/index.html">REGARD</a>
       <nav>
         <div class="theme-switch-wrapper">
+          <i class="far fa-sun fa-2x"></i>
           <label class="theme-switch" for="checkbox">
             <input type="checkbox" id="checkbox" />
             <div class="slider round"></div>
           </label>
+          <i class="fas fa-moon fa-2x"></i>
         </div>
       </nav>
     </header>
 
     <div id="skybanner">
-      <a href="#projectsList">Latest Projects</a>
-      <br />
-      <i class="fas fa-chevron-down"></i>
+      <a href="#projectsList">
+        <h1>Latest Projects</h1>
+        <br />
+        <i class="fas fa-chevron-down fa-3x"></i>
+      </a>
+
       <div class="buildings"></div>
     </div>
 
-    <main>
+    <main id="projectsList">
       <div class="card">Building 1 <a class="external-link">Youtube</a></div>
       <div class="card">Building 2</div>
+      <div class="card">Building 3 <a class="external-link">Youtube</a></div>
+      <div class="card">Building 4</div>
     </main>
+
+    <footer>
+      <h3>Contacts:</h3>
+      <p>example@gmail.com</p>
+    </footer>
   </body>
 </html>
