@@ -1,0 +1,24 @@
+Installing SSL / CDN
+  https://uk.godaddy.com/community/SSL-And-Security/SSL-Cloudflare-Godaddy/td-p/101113
+  https://uk.godaddy.com/help/install-ssl-certificates-16623
+
+Privacy Policy
+  https://www.iubenda.com/en/help/11994-privacy-policy-for-google-analytics
+
+Picking Backend / CMS
+  https://www.gatsbyjs.org/docs/headless-cms/
+  https://www.gatsbyjs.org/blog/2018-2-6-choosing-a-back-end/
+
+Languages / Localisation / i18n
+  https://www.gatsbyjs.org/docs/localization-i18n/
+  https://react.i18next.com/getting-started
+  https://www.gatsbyjs.org/blog/2017-10-17-building-i18n-with-gatsby/ 
+
+Sourcing Content and data
+  https://www.gatsbyjs.org/docs/content-and-data/
+  https://www.gatsbyjs.org/packages/gatsby-source-filesystem/
+  https://github.com/crdoconnor/strictyaml 
+
+General Functionality
+  https://www.gatsbyjs.org/docs/adding-app-and-website-functionality/
+  https://www.gatsbyjs.org/docs/gatsby-image/
