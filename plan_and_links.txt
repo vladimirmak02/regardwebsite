@@ -2,6 +2,7 @@ Installing SSL / CDN
   https://uk.godaddy.com/community/SSL-And-Security/SSL-Cloudflare-Godaddy/td-p/101113
   https://uk.godaddy.com/help/install-ssl-certificates-16623
   https://stevepolito.design/blog/configure-cloudflare-dns-to-work-with-netlify/
+  https://seranking.com/blog/www-vs-non-www/
 
 Privacy Policy
   https://www.iubenda.com/en/help/11994-privacy-policy-for-google-analytics
@@ -9,6 +10,8 @@ Privacy Policy
 Picking Backend / CMS
   https://www.gatsbyjs.org/docs/headless-cms/
   https://www.gatsbyjs.org/blog/2018-2-6-choosing-a-back-end/
+  https://www.netlifycms.org/docs/gatsby/
+  https://stevepolito.design/blog/configure-cloudflare-dns-to-work-with-netlify/
 
 Languages / Localisation / i18n
   https://www.gatsbyjs.org/docs/localization-i18n/
