@@ -2,7 +2,7 @@ Installing SSL / CDN
   https://uk.godaddy.com/community/SSL-And-Security/SSL-Cloudflare-Godaddy/td-p/101113
   https://uk.godaddy.com/help/install-ssl-certificates-16623
   https://stevepolito.design/blog/configure-cloudflare-dns-to-work-with-netlify/
-  https://seranking.com/blog/www-vs-non-www/
+  https://seranking.com/blog/www-vs-non-www/ 
 
 Privacy Policy
   https://www.iubenda.com/en/help/11994-privacy-policy-for-google-analytics
@@ -28,4 +28,3 @@ General Functionality
   https://www.gatsbyjs.org/docs/gatsby-image/
 
 Styling / VFX
-  https://webdesign.tutsplus.com/tutorials/how-to-create-a-frosted-glass-effect-in-css--cms-32535
