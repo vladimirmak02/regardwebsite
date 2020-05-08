@@ -29,4 +29,6 @@ General Functionality
 
 Styling / VFX
   https://cdn.dribbble.com/users/648583/screenshots/2386084/language-selection.png
-  https://github.com/svg/svgo
+  https://jakearchibald.github.io/svgomg/
+  https://www.blobmaker.app/  
+  https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animate
