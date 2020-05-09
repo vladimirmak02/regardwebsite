@@ -17,6 +17,7 @@ Languages / Localisation / i18n
   https://www.gatsbyjs.org/docs/localization-i18n/
   https://react.i18next.com/getting-started
   https://www.gatsbyjs.org/blog/2017-10-17-building-i18n-with-gatsby/ 
+  https://stackoverflow.com/questions/50914448/how-to-provide-internationalization-properly-using-gatsby-netlify-cms
 
 Sourcing Content and data
   https://www.gatsbyjs.org/docs/content-and-data/

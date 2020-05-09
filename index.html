@@ -2,39 +2,153 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1080px, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Regard</title>
     <link rel="stylesheet" href="resetStyle.css" />
     <link rel="stylesheet" href="style.css" />
-    <script
-      src="https://kit.fontawesome.com/48cbd93de7.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/48cbd93de7.js" crossorigin="anonymous"></script>
     <script src="/script.js" defer></script>
   </head>
+
+  <style>
+    body {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: minmax(15%, auto) minmax(30%, auto) minmax(40%, auto) minmax(20%, auto);
+      gap: 2rem;
+      grid-template-areas: "header header "
+        "main main"
+        "aside aside"
+        "footer footer";
+    }
+
+    @media only screen and (min-width: 1024px) {
+
+      body {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: minmax(15%, auto) minmax(70%, auto) minmax(20%, auto);
+        gap: 5rem;
+        grid-template-areas: "header header "
+          "main aside"
+          "footer footer";
+      }
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: flex-start;
+    }
+
+    button {
+      background-color: #FFD8A3;
+      border: none;
+      border-radius: 2rem;
+      padding: 1rem 1.5rem 1.3rem 1.5rem;
+      transition: background-color 0.3s;
+      color: #0091ea;
+      font-size: 2.5rem;
+      cursor: pointer;
+      font-weight: 300;
+    }
+
+    button:hover {
+      background-color: #FFE2BD;
+    }
+
+  </style>
+
   <body>
     <header>
       <a href="/index.html">REGARD</a>
       <nav>
         <div class="theme-switch-wrapper">
+          <i class="far fa-sun fa-2x"></i>
           <label class="theme-switch" for="checkbox">
             <input type="checkbox" id="checkbox" />
             <div class="slider round"></div>
           </label>
+          <i class="fas fa-moon fa-2x"></i>
+        </div>
+        <div class="languages">
+          <label for="language-select">Lang:</label>
+          <select id="language-select">
+            <option value="en">English</option>
+            <option value="cz">Czech</option>
+            <option value="ru">Russian</option>
+          </select>
         </div>
       </nav>
     </header>
 
-    <div id="skyBanner">
-      <a href="#projectsList">Latest Projects</a>
-      <br />
-      <i class="fas fa-chevron-down"></i>
-      <div class="buildings"></div>
-    </div>
-
-    <main>
-      <div class="card">Building 1</div>
-      <div class="card">Building 2</div>
+    <main style="font-weight: lighter;">
+      <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.3em;">Building safe and <br /> comfortable homes</h2>
+      <button onclick="location.href='/projects.html';">All Projects<i style="padding-left: 0.6em;" class="fas fa-chevron-right fa-sm"></i></button>
     </main>
+
+    <style>
+      aside {
+        position: relative;
+        top: 10%;
+        left: 20%;
+        width: 60%;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      svg {
+        /* height: 100%; */
+        width: 140%;
+        position: absolute;
+        top: -15%;
+        left: -20%;
+        z-index: 1;
+      }
+
+      @media only screen and (min-width: 1024px) {
+        aside {
+          position: relative;
+          top: 0%;
+          left: -5%;
+          width: 100%;
+        }
+
+        img {
+          width: 70%;
+        }
+
+        svg {
+          width: 100%;
+          position: absolute;
+          top: -11%;
+          left: -15%;
+          z-index: 1;
+        }
+      }
+
+    </style>
+
+    <aside onclick="location.href='/chodov2018.html';" style="cursor: pointer; font-weight: normal;">
+      <div class="building" style="position:relative; z-index: 2;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.3em;">Latest Project</h2>
+        <img src="1.jpg" />
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 439 382">
+        <path fill="#C7E9FF" d="M399 95c43 63 55 155 18 212-36 57-122 79-200 75S68 346 31 289c-38-58-42-142-7-200S134 0 208 0c75 1 148 33 191 95z" />
+      </svg>
+
+    </aside>
+
+    <footer>
+      <p>About</p>
+      <Address>
+        Address
+      </Address>
+      <p>Contact</p>
+    </footer>
   </body>
 </html>
