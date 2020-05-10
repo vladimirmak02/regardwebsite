@@ -14,8 +14,8 @@
     body {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: minmax(15%, auto) minmax(30%, auto) minmax(40%, auto) minmax(20%, auto);
-      gap: 2rem;
+      grid-template-rows: repeat(4, auto);
+      gap: 1.5em;
       grid-template-areas: "header header "
         "main main"
         "aside aside"
@@ -27,8 +27,8 @@
       body {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: minmax(15%, auto) minmax(70%, auto) minmax(20%, auto);
-        gap: 5rem;
+        grid-template-rows: repeat(3, auto);
+        gap: 2rem;
         grid-template-areas: "header header "
           "main aside"
           "footer footer";
@@ -46,10 +46,10 @@
       background-color: #FFD8A3;
       border: none;
       border-radius: 2rem;
-      padding: 1rem 1.5rem 1.3rem 1.5rem;
+      padding: 1rem 1.5rem 1rem 1.5rem;
       transition: background-color 0.3s;
       color: #0091ea;
-      font-size: 2.5rem;
+      font-size: 1.5rem;
       cursor: pointer;
       font-weight: 300;
     }
@@ -84,63 +84,105 @@
     </header>
 
     <main style="font-weight: lighter;">
-      <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.3em;">Building safe and <br /> comfortable homes</h2>
+      <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem; line-height: 1.3em;">Building safe and <br /> comfortable homes</h2>
       <button onclick="location.href='/projects.html';">All Projects<i style="padding-left: 0.6em;" class="fas fa-chevron-right fa-sm"></i></button>
     </main>
 
     <style>
       aside {
+        overflow: hidden;
         position: relative;
-        top: 10%;
-        left: 20%;
-        width: 60%;
-      }
-
-      img {
+        top: 0%;
+        left: 0%;
         width: 100%;
       }
 
-      svg {
-        /* height: 100%; */
+      main {
+        margin-top: 0;
+      }
+
+      img {
+        position: relative;
         width: 140%;
-        position: absolute;
-        top: -15%;
         left: -20%;
+        padding-bottom: 0.5rem;
+        border-radius: 1rem;
+      }
+
+      svg {
+        width: 120%;
+        position: relative;
+        top: 0%;
+        left: -10%;
         z-index: 1;
       }
 
+      .building {
+        width: 60%;
+        position: absolute;
+        top: 0px;
+        left: 20%;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+      }
+
       @media only screen and (min-width: 1024px) {
+
+        main {
+          margin-top: 25%;
+        }
+
         aside {
+          overflow: visible;
           position: relative;
           top: 0%;
-          left: -5%;
-          width: 100%;
+          left: -10%;
+          width: 80%;
         }
 
         img {
-          width: 70%;
+          position: relative;
+          width: 100%;
+          left: -0%;
         }
 
         svg {
-          width: 100%;
-          position: absolute;
-          top: -11%;
-          left: -15%;
+          width: 120%;
+          position: relative;
+          top: 0%;
+          left: -10%;
           z-index: 1;
+        }
+
+        .building {
+          text-align: right;
+          width: 80%;
+          position: absolute;
+          top: 0%;
+          left: 10%;
         }
       }
 
     </style>
 
-    <aside onclick="location.href='/chodov2018.html';" style="cursor: pointer; font-weight: normal;">
-      <div class="building" style="position:relative; z-index: 2;">
-        <h2 style="font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.3em;">Latest Project</h2>
-        <img src="1.jpg" />
-      </div>
+    <aside>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 439 382">
-        <path fill="#C7E9FF" d="M399 95c43 63 55 155 18 212-36 57-122 79-200 75S68 346 31 289c-38-58-42-142-7-200S134 0 208 0c75 1 148 33 191 95z" />
+        <path fill="#F0F6FF" d="M401 85c39 61 49 169 5 229-31 42-107 69-189 68-100 0-150-40-172-68-52-62-58-174-13-237C72 23 134 0 208 0c85 0 152 22 193 85z">
+          <animate id="scrollUp" attributeName="d" restart="whenNotActive" fill="freeze" to="M392 90c39 61 47 185 7 241-31 42-100 52-182 51-100 0-153-38-175-66-42-55-54-168-9-231C73 31 152 0 208 0c62 0 143 27 184 90z" begin="indefinite" dur="0.2s" />
+          <animate id="scrollDown" attributeName="d" restart="whenNotActive" fill="freeze" to="M399 75c43 63 45 152 8 226-36 57-132 81-190 81-62 0-147-42-184-99-38-58-44-151 0-207C75 23 107 0 208 0c104 0 148 13 191 75z" begin="indefinite" dur="0.2s" />
+          <animate id="backtoSTD" attributeName="d" restart="whenNotActive" fill="freeze" to="M401 85c39 61 49 169 5 229-31 42-107 69-189 68-100 0-150-40-172-68-52-62-58-174-13-237C72 23 134 0 208 0c85 0 152 22 193 85z" begin="scrollUp.end;scrollDown.end;" dur="1s" />
+        </path>
       </svg>
 
+      <div class="building" style="font-weight: lighter; z-index: 2; line-height: 1.5em">
+        <h2 onclick="location.href='/chodov2018.html';" style="align-self: baseline; font-size: 1.5em; line-height: 2em;"><a>Latest Project</a></h2>
+        <img onclick="location.href='/chodov2018.html';" src="1.jpg" />
+        <h3 onclick="location.href='/chodov2018.html';">CHODOV 2018</h3>
+        <p style="font-weight: normal;">A beatiful building</p>
+        <a style="font-weight: normal;" href="https://www.chodov2018.cz" target="_blank">chodov2018.cz</a>
+      </div>
     </aside>
 
     <footer>
@@ -150,5 +192,28 @@
       </Address>
       <p>Contact</p>
     </footer>
+
+    <script>
+      var lastScrollTop = 0;
+      var up = false;
+      var down = false;
+      // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
+      window.addEventListener("scroll", function () {
+        var st = window.pageYOffset || document.documentElement.scrollTop;
+        if (st > lastScrollTop && down === false) {
+          // downscroll code
+          down = true;
+          up = false;
+          document.getElementById("scrollDown").beginElement();
+        } else if (st < lastScrollTop && up === false) {
+          // upscroll code
+          down = false;
+          up = true;
+          document.getElementById("scrollUp").beginElement();
+        }
+        lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+      }, false);
+    </script>
+
   </body>
 </html>

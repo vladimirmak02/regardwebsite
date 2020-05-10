@@ -12,7 +12,8 @@ header {
   position: sticky;
   z-index: 10;
   top: 0;
-  padding: 1em 2em 1em 1em;
+  font-size: 45px;
+  padding: 0.3em 0.3em 0.3em 0.3em;
   display: flex;
   justify-content: space-between;
   background-color: var(--bg-color);
@@ -20,8 +21,14 @@ header {
 
 header a {
   color: #0091ea;
-  font-size: 4rem;
   font-weight: 900;
+}
+
+@media only screen and (min-width: 1024px) {
+  header {
+    z-index: 0;
+    font-size: 60px;
+  }
 }
 
 header nav {
@@ -29,6 +36,7 @@ header nav {
   flex-direction: column;
   justify-content: start;
   align-items: flex-end;
+  font-size: 16px;
 }
 
 header nav .languages {
@@ -49,15 +57,12 @@ header nav select option {
 main {
   grid-area: main;
   justify-self: center;
-  align-self: center;
+  align-self: start;
 }
 
 aside {
   grid-area: aside;
-}
-
-main, aside {
-  padding-bottom: 10%;
+  align-self: start;
 }
 
 footer {
@@ -65,7 +70,8 @@ footer {
   grid-area: footer;
   display: flex;
   justify-content: space-around;
-  padding: 2rem;
+  align-items: stretch;
+  padding: 3rem;
   background-color: var(--primary-dark);
 }
 
@@ -98,7 +104,7 @@ a {
 /*slider switch css */
 .theme-switch-wrapper {
   display: flex;
-  height: em;
+  height: auto;
   align-items: flex-end;
   color: var(--font-color);
 }

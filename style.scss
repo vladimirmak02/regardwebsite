@@ -19,20 +19,25 @@ header {
   position: sticky;
   z-index: 10;
   top: 0;
-  padding: 1em 2em 1em 1em;
+  font-size: 45px;
+  padding: 0.3em 0.3em 0.3em 0.3em;
   display: flex;
   justify-content: space-between;
   background-color: var(--bg-color);
   a {
     color: #0091ea;
-    font-size: 4rem;
     font-weight: 900;
   }
+  @media only screen and (min-width: 1024px) {
+    z-index: 0;
+    font-size: 60px;
+  } 
   nav{
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: flex-end;
+    font-size: 16px;
     .languages{
       padding-top: 1em;
     }
@@ -53,25 +58,23 @@ header {
 main{
   grid-area: main;
   justify-self: center;
-  align-self: center;
+  align-self: start;
 }
 
 aside {
   grid-area: aside;
   // justify-self: center;
-  // align-self: center;
+  align-self: start;
 }
 
-main,aside {
-  padding-bottom: 10%;
-}
 
 footer {
   color: var(--light-text-color);
   grid-area: footer;
   display: flex;
   justify-content: space-around;
-  padding: 2rem;
+  align-items: stretch;
+  padding: 3rem;
   background-color: var(--primary-dark);
 }
 
@@ -105,7 +108,7 @@ a {
 /*slider switch css */
 .theme-switch-wrapper {
   display: flex;
-  height: em;
+  height: auto;
   align-items: flex-end;
   color: var(--font-color);
   em {
