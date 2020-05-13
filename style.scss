@@ -202,9 +202,9 @@ main{
     top: -10%;
     left: -5%;
     z-index: 0;
-    background-color: #D1EDFF;
+    background-color: var(--primary-light);
     border-radius: 5rem;
-    opacity: 0.3;
+    opacity: 0.4;
     transform: rotate(11deg);
   }
 }
