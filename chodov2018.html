@@ -16,10 +16,10 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(4, auto);
-      grid-gap: 1.5em;
+      grid-gap: 1em;
       grid-template-areas: "header header "
-        "main main"
         "aside aside"
+        "main main"
         "footer footer";
     }
 
@@ -28,28 +28,12 @@
       #grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, auto);
+        grid-template-rows: auto minmax(80%, auto) auto;
         grid-gap: 2rem;
         grid-template-areas: "header header "
           "main aside"
           "footer footer";
       }
-    }
-
-    main {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: flex-start;
-    }
-
-    @media only screen and (min-width: 1024px) {
-
-      main,
-      aside {
-        z-index: 3;
-      }
-
     }
 
   </style>
@@ -64,13 +48,10 @@
         </nav>
       </header>
 
-      <main id="indexMain" style="font-weight: lighter;">
-        <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem; line-height: 1.3em;">Building safe and <br /> comfortable homes</h2>
-        <button onclick="location.href='/projects.html';">All Projects<i style="padding-left: 0.6em;" class="fas fa-chevron-right fa-sm"></i></button>
-      </main>
-
       <style>
-        aside {
+        aside {}
+
+        main {
           overflow: hidden;
           position: relative;
           top: 0%;
@@ -78,16 +59,10 @@
           width: 100%;
         }
 
-        main {
-          margin-top: 0;
-        }
-
         img {
           position: relative;
-          width: 140%;
-          left: -20%;
-          padding-bottom: 0.5rem;
-          border-radius: 1rem;
+          width: 100%;
+          left: 0;
         }
 
         svg {
@@ -95,15 +70,13 @@
           position: relative;
           top: 0%;
           left: -10%;
-          z-index: 1;
         }
 
-        .lastBuilding {
-          width: 60%;
-          text-align: right;
+        .building {
+          width: 90%;
           position: absolute;
           top: 0px;
-          left: 20%;
+          left: 5%;
           display: flex;
           height: 100%;
           flex-direction: column;
@@ -111,44 +84,57 @@
         }
 
         @media only screen and (min-width: 1024px) {
-
-          main {
-            margin-top: 25%;
+          aside {
+            align-self: center;
+            position: relative;
+            width: 105%;
+            left: -10%;
+            border-radius: 0.5rem;
+            border: solid #0091ea 0.5rem;
           }
 
-          aside {
-            overflow: visible;
+          main {
+            overflow: hidden;
             position: relative;
             top: 0%;
-            left: -10%;
+            left: 10%;
             width: 80%;
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
           }
 
           img {
             position: relative;
             width: 100%;
-            left: -0%;
+            left: 0;
           }
 
           svg {
-            width: 120%;
+            width: 100%;
             position: relative;
-            top: 0%;
-            left: -10%;
-            z-index: 1;
+            align-self: center;
+            top: 0;
+            left: auto;
+            overflow: visible;
           }
 
-          .lastBuilding {
-            width: 80%;
+          .building {
+            width: 70%;
             position: absolute;
-            top: 0%;
-            left: 10%;
+            top: 0px;
+            left: 15%;
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
           }
         }
 
       </style>
 
-      <aside onclick="location='/chodov2018.html'" style="cursor: pointer;">
+      <main>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 439 382">
           <path d="M401 85c39 61 49 169 5 229-31 42-107 69-189 68-100 0-150-40-172-68-52-62-58-174-13-237C72 23 134 0 208 0c85 0 152 22 193 85z">
             <animate id="scrollUp" attributeName="d" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1" restart="whenNotActive" fill="freeze" to="M392 90c39 61 47 185 7 241-31 42-100 52-182 51-100 0-153-38-175-66-42-55-54-168-9-231C73 31 152 0 208 0c62 0 143 27 184 90z" begin="indefinite" dur="0.3s" />
@@ -158,13 +144,15 @@
           </path>
         </svg>
 
-        <div class="lastBuilding" style="font-weight: lighter; z-index: 2; line-height: 1.5em">
-          <h2 onclick="location.href='/chodov2018.html';" style="align-self: baseline; font-size: 1.5em; line-height: 2em;">Latest Project</h2>
-          <img onclick="location.href='/chodov2018.html';" src="1.jpg" />
-          <h3 onclick="location.href='/chodov2018.html';">CHODOV 2018</h3>
-          <p style="font-weight: normal;">A beatiful building</p>
-          <a style="font-weight: normal;" href="https://www.chodov2018.cz" rel="noopener" target="_blank">chodov2018.cz</a>
+        <div class="building" style="line-height: 1.3em">
+          <h1 style="font-weight: lighter; font-size: 1.5em; line-height: 1.5em;">Chodov 2018 </h1>
+          <p>A beatiful building. We offer different flats type 1+KK, 2+KK, and larger types 3+KK, 4+KK with terraces and front gardens. Modern living for people who want to live in Prague. A new block of flats called CHODOV2018 contains 75 flats and is located in a beautiful, quiet place with a direct walking distance either to the metro station Roztyly or Chodov, and the distance to OC Chodov shopping centre is 1600 m, which is just 20 minutes of walk. </p>
+          <a style="font-weight: lighter; font-size: 1.5em; padding-bottom: 0.5em; align-self: flex-end;" href="https://www.chodov2018.cz" rel="noopener" target="_blank">chodov2018.cz</a>
         </div>
+      </main>
+
+      <aside style="cursor: pointer;">
+        <img src="/1.jpg">
       </aside>
 
       <footer>

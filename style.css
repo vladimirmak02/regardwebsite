@@ -10,54 +10,215 @@ html, body {
 header {
   grid-area: header;
   position: sticky;
-  z-index: 10;
+  z-index: 2;
   top: 0;
   font-size: 45px;
   padding: 0.3em 0.3em 0.3em 0.3em;
   display: flex;
   justify-content: space-between;
   background-color: var(--bg-color);
+  transition: background-color 0.3s ease-out;
 }
 
 header a {
   color: #0091ea;
   font-weight: 900;
+  flex-grow: 1 1 auto;
+  max-width: 50%;
 }
 
 @media only screen and (min-width: 1024px) {
   header {
-    z-index: 0;
     font-size: 60px;
   }
 }
 
 header nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: flex-end;
-  font-size: 16px;
+  padding-right: 0.1em;
 }
 
-header nav .languages {
-  padding-top: 1em;
+#documentCover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #111;
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: block;
 }
 
-header nav select {
+#documentCover.visible {
+  z-index: 11;
+  opacity: 0.2;
+}
+
+#sidebar {
+  height: 100%;
+  /* 100% Full-height */
+  width: 50%;
+  /* 0 width - change this with JavaScript */
+  position: fixed;
+  /* Stay in place */
+  z-index: 12;
+  /* Stay on top */
+  top: 0;
+  /* Stay at the top */
+  right: -50%;
   background-color: var(--secondary-color);
+  /* Black*/
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  transition: right 0.3s;
+  /* 0.3 second transition effect to slide in the sidenav */
+  padding-top: 6rem;
+  transition-timing-function: ease-out;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: start;
+}
+
+@media only screen and (min-width: 1024px) {
+  #sidebar {
+    right: -25%;
+    width: 25%;
+  }
+}
+
+#sidebar a {
+  color: var(--font-color);
+  font-size: 1.5rem;
+  font-weight: lighter;
+  padding: 0.3em;
+}
+
+#sidebar .closebtn {
+  position: absolute;
+  padding: 0.3em;
+  top: -0.1em;
+  right: 0;
+  font-size: 45px;
+}
+
+@media only screen and (min-width: 1024px) {
+  #sidebar .closebtn {
+    font-size: 60px;
+  }
+}
+
+#options {
+  text-align: center;
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+#options .languages {
+  font-size: 1.5em;
+  padding: 1.5rem 0;
+}
+
+#options select {
+  background-color: var(--complementary-color);
   border: none;
   border-radius: 0.2em;
   padding: 0.2em;
 }
 
-header nav select option {
+#options select option {
   border: 2px solid var(--primary-color);
 }
 
-main {
+main#indexMain {
+  appearance: none;
   grid-area: main;
   justify-self: center;
   align-self: start;
+  letter-spacing: 1px;
+}
+
+main#indexMain button {
+  background-color: var(--complementary-color);
+  color: var(--font-color);
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  transition: background-color 0.3s ease-out, opacity 0.2s;
+  font-size: 1.5rem;
+  cursor: pointer;
+  font-weight: lighter;
+  font-family: "Open Sans", sans-serif;
+}
+
+main#indexMain button:hover {
+  opacity: 0.85;
+}
+
+.buildings {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: stretch;
+  flex-flow: column nowrap;
+}
+
+.buildings > * {
+  display: flex;
+  align-content: space-around;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.buildings .building {
+  cursor: pointer;
+}
+
+.buildings .building:nth-child(odd) {
+  flex-flow: row wrap;
+}
+
+.buildings .building:nth-child(odd) h3 {
+  background-color: var(--complementary-color);
+}
+
+.buildings .building:nth-child(even) {
+  flex-flow: row-reverse wrap;
+}
+
+.buildings .building:nth-child(even) h3 {
+  background-color: var(--primary-light);
+}
+
+.buildings .building img {
+  width: 100%;
+  border: none;
+  border-radius: 0.5rem;
+  flex: 0 0 100%;
+}
+
+@media only screen and (min-width: 1024px) {
+  .buildings .building img {
+    flex-basis: 50%;
+    width: 50%;
+  }
+}
+
+h3 {
+  font-size: 1.3em;
+  line-height: 1.5em;
+  font-weight: lighter;
+}
+
+i {
+  opacity: 0.85;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+i:hover {
+  opacity: 1;
 }
 
 aside {
@@ -69,39 +230,73 @@ footer {
   color: var(--light-text-color);
   grid-area: footer;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  align-items: stretch;
+  align-items: center;
   padding: 3rem;
   background-color: var(--primary-dark);
+  transition: background-color 0.3s ease-out;
+}
+
+@media only screen and (min-width: 1024px) {
+  footer {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+footer .collumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+footer > * {
+  flex: 1 1 33.3%;
 }
 
 a {
   text-decoration: none;
+  color: var(--link-color);
+}
+
+a :visited {
+  color: var(--link-color);
+}
+
+svg {
+  fill: var(--primary-light);
+  transition: fill 0.3s;
 }
 
 :root {
   --primary-color: #0091ea;
   --primary-dark: #0064b7;
-  --primary-light: #64c1ff;
-  --secondary-color: #e6e6e6;
+  --primary-light: #D1EDFF;
+  --secondary-color: #c0c0c0;
   --font-color: #333;
   --link-color: #0366d6;
   --bg-color: #fff;
   --light-text-color: #fff;
+  --complementary-color: #FFD8A3;
 }
 
 [data-theme="dark"] {
   --primary-color: #15001a;
   --primary-dark: #0c0713;
-  --primary-light: #48286e;
-  --secondary-color: #ffd600;
-  --font-color: #ccc;
+  --primary-light: #4C3F5E;
+  --secondary-color: #666664;
+  --font-color: #eee;
   --link-color: #0366d6;
   --bg-color: #0b001a;
-  --light-text-color: #9d72ff;
+  --light-text-color: #aaa;
+  --complementary-color: #884FDE;
 }
 
-/*slider switch css */
+/*slider switch css ----------------------------------------
+-----                                              ---------
+------------------------------------------------------------*/
 .theme-switch-wrapper {
   display: flex;
   height: auto;
@@ -161,9 +356,10 @@ input:checked + .slider:before {
 }
 
 input:checked + .slider.round:before {
-  background-color: var(--secondary-color);
+  background-color: #CACACA;
 }
 
 .slider.round:before {
   border-radius: 50%;
+  background-color: var(--complementary-color);
 }

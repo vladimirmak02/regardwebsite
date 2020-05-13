@@ -13,27 +13,140 @@
   <style>
     body {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: minmax(10%, auto) minmax(70%, auto) minmax(10%, auto);
-      gap: 1em;
-      grid-template-areas: "header header "
-        "main main"
-        "footer footer";
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, auto);
+      grid-gap: 1rem;
+      grid-template-areas: "header"
+        "main"
+        "footer";
+    }
+
+    @media only screen and (min-width: 1024px) {
+      #grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, auto);
+        grid-gap: 2rem;
+        grid-template-areas: "header"
+          "main"
+          "footer";
+      }
+    }
+
+    main {
+      position: relative;
+      width: 80%;
+      left: 10%;
+    }
+
+    article {
+      margin-top: 0.7rem;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: flex-start;
+      line-height: 1.3em;
+      flex: 1 0 50%;
+      max-width: 100%;
+    }
+
+    @media only screen and (min-width: 1024px) {
+      article {
+        margin-top: 0;
+      }
+
+      article>* {
+        margin: 0 2rem;
+      }
+    }
+
+    article h3 {
+      font-size: 1.3em;
+      line-height: 1.5em;
+      font-weight: lighter;
+      border-radius: 1.2em;
+      padding: 0.5em;
+      margin-bottom: 0.5rem;
+    }
+
+
+    h1 {
+      font-size: 2em;
+      line-height: 2em;
+      font-weight: lighter;
     }
 
   </style>
 
   <body>
+
     <header>
       <a href="/index.html">REGARD</a>
       <nav>
+        <div class="nav-btn" onclick="toggleNav()"><i id='navOpenBtn' class="fas fa-bars "></i></div>
+      </nav>
+    </header>
+
+    <main>
+      <h1>All Projects</h1>
+      <div class="buildings">
+        <div class="building" onclick="location='/chodov2018.html'">
+          <img src="/1.jpg" alt="Building 1">
+          <article>
+            <h3>CHODOV 2018</h3>
+            <p>
+              Chodov 2018 is a development project of an apartment building with 75 individual apartments. Started in 2018.
+            </p>
+          </article>
+        </div>
+        <div class="building" onclick="location='/chodov2018.html'">
+          <img src="/1.jpg" alt="Building 2">
+          <article>
+            <h3>CHODOV 2018</h3>
+            <p>
+              Chodov 2018 is a development project of an apartment building with 75 individual apartments. Started in 2018.
+            </p>
+          </article>
+        </div>
+        <div class="building" onclick="location='/chodov2018.html'">
+          <img src="/1.jpg" alt="Building 3">
+          <article>
+            <h3>CHODOV 2018</h3>
+            <p>
+              Chodov 2018 is a development project of an apartment building with 75 individual apartments. Started in 2018.
+            </p>
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="collumn">
+        <h3>About</h3>
+        <p>Regard is a real estate company</p>
+        <p>Founded in 1999</p>
+      </div>
+      <div class="collumn">
+        <h3>Address</h3>
+        <Address>Na Dolnici 2674/1a</Address>
+      </div>
+      <div class="collumn">
+        <h3>Contact</h3>
+        <p>dl@regard.cz</p>
+      </div>
+    </footer>
+    </div>
+
+    <div id="documentCover" onclick="toggleNav()"></div>
+    <nav id="sidebar">
+      <div id='options'>
         <div class="theme-switch-wrapper">
-          <i class="far fa-sun fa-2x"></i>
+          <i class="far fa-sun fa-2x" onclick="javascript:if(document.getElementById('checkbox').checked)document.getElementById('checkbox').click()"></i>
           <label class="theme-switch" for="checkbox">
             <input type="checkbox" id="checkbox" />
             <div class="slider round"></div>
           </label>
-          <i class="fas fa-moon fa-2x"></i>
+          <i class="fas fa-moon fa-2x" onclick="javascript:if(!document.getElementById('checkbox').checked)document.getElementById('checkbox').click()"></i>
         </div>
         <div class="languages">
           <label for="language-select">Lang:</label>
@@ -43,20 +156,39 @@
             <option value="ru">Russian</option>
           </select>
         </div>
-      </nav>
-    </header>
+      </div>
+      <i class="closebtn fas fa-times" onclick="toggleNav()"></i>
+      <a href="/index.html">Home</a>
+      <a href="/projects.html">Projects</a>
+      <a href="/about.html">About</a>
+    </nav>
 
-    <main>
-      <h1>All Projects</h1>
-      <div class="buildings"></div>
-    </main>
+    <script>
+      var sidebarOpen = false;
+      var right = 0;
+      var documentCover = document.getElementById("documentCover");
+      var sidebar = document.getElementById("sidebar");
+      function toggleNav() {
+        if (sidebarOpen === false) {
+          // open
+          documentCover.classList.add('visible');
+          sidebar.style.right = "0";
+          sidebarOpen = true;
+        } else {
+          // close
+          documentCover.classList.remove('visible');
+          if (window.matchMedia("(min-width: 1024px)").matches) {
+            sidebar.style.right = "-25%";
+          } else {
+            sidebar.style.right = "-50%";
+          }
+          sidebarOpen = false;
+        }
 
-    <footer>
-      <p>About</p>
-      <Address>
-        Address
-      </Address>
-      <p>Contact</p>
-    </footer>
+      }
+    </script>
+
+
   </body>
+
 </html>
