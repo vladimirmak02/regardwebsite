@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regard</title>
+    <link rel="stylesheet" href="resetStyle.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/48cbd93de7.js" crossorigin="anonymous"></script>
+    <script src="/script.js" defer></script>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+  </head>
+
+  <style>
+    #grid {
+      display: grid;
+      min-height: 100vh;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr auto;
+      grid-gap: 1.5em;
+      grid-template-areas: "header"
+        "main"
+        "footer";
+    }
+
+
+
+    main {
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: flex-start;
+    }
+
+  </style>
+
+  <body>
+    <div id='grid'>
+
+      <header>
+        <a href="/index.html">REGARD</a>
+        <nav>
+          <div class="nav-btn" onclick="toggleNav()"><i id='navOpenBtn' class="fas fa-bars "></i></div>
+        </nav>
+      </header>
+
+      <main id="indexMain" style="font-weight: normal; line-height: 1.3em;">
+        <h1 style="font-size: 1.5rem; margin-bottom: 1.5rem; line-height: 1em;">About Regard</h1>
+        <p>
+          Regard s.r.o. is a company founded in the Czech Republic in 1999.
+        </p>
+      </main>
+
+      <footer>
+        <div class="collumn">
+          <h3>About</h3>
+          <p>Regard is a real estate company</p>
+          <p>Founded in 1999</p>
+        </div>
+        <div class="collumn">
+          <h3>Address</h3>
+          <Address>Na Dolnici 2674/1a</Address>
+        </div>
+        <div class="collumn">
+          <h3>Contact</h3>
+          <p>dl@regard.cz</p>
+        </div>
+      </footer>
+
+    </div>
+    <div id="documentCover" onclick="toggleNav()"></div>
+    <nav id="sidebar">
+      <div id='options'>
+        <div class="theme-switch-wrapper">
+          <i class="far fa-sun fa-2x" onclick="javascript:if(document.getElementById('checkbox').checked)document.getElementById('checkbox').click()"></i>
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+          </label>
+          <i class="fas fa-moon fa-2x" onclick="javascript:if(!document.getElementById('checkbox').checked)document.getElementById('checkbox').click()"></i>
+        </div>
+        <div class="languages">
+          <label for="language-select">Lang:</label>
+          <select id="language-select">
+            <option value="en">English</option>
+            <option value="cz">Czech</option>
+            <option value="ru">Russian</option>
+          </select>
+        </div>
+      </div>
+      <i class="closebtn fas fa-times" onclick="toggleNav()"></i>
+      <a href="/index.html">Home</a>
+      <a href="/projects.html">Projects</a>
+      <a href="/about.html">About</a>
+    </nav>
+
+    <script>
+
+      var sidebarOpen = false;
+      var right = 0;
+      var documentCover = document.getElementById("documentCover");
+      var sidebar = document.getElementById("sidebar");
+      function toggleNav() {
+        if (sidebarOpen === false) {
+          // open
+          documentCover.classList.add('visible');
+          sidebar.style.right = "0";
+          sidebarOpen = true;
+        } else {
+          // close
+          documentCover.classList.remove('visible');
+          if (window.matchMedia("(min-width: 1024px)").matches) {
+            sidebar.style.right = "-25%";
+          } else {
+            sidebar.style.right = "-50%";
+          }
+          sidebarOpen = false;
+        }
+
+      }
+    </script>
+
+  </body>
+
+</html>

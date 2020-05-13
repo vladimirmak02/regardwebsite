@@ -9,11 +9,17 @@
     <script src="https://kit.fontawesome.com/48cbd93de7.js" crossorigin="anonymous"></script>
     <script src="/script.js" defer></script>
     <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+    <!-- Required Core Stylesheet -->
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css">
+
+    <!-- Optional Theme Stylesheet -->
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css">
   </head>
 
   <style>
     #grid {
       display: grid;
+      width: 100%;
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(4, auto);
       grid-gap: 1em;
@@ -28,7 +34,7 @@
       #grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto minmax(80%, auto) auto;
+        grid-template-rows: auto minmax(70%, auto) auto;
         grid-gap: 2rem;
         grid-template-areas: "header header "
           "main aside"
@@ -49,111 +55,105 @@
       </header>
 
       <style>
-        aside {}
+        img {
+          width: 100%;
+        }
+
+        aside {
+          width: 100%;
+        }
 
         main {
+          padding: 4rem 0;
+          width: 100%;
           overflow: hidden;
-          position: relative;
-          top: 0%;
-          left: 0%;
-          width: 100%;
-        }
-
-        img {
-          position: relative;
-          width: 100%;
-          left: 0;
-        }
-
-        svg {
-          width: 120%;
-          position: relative;
-          top: 0%;
-          left: -10%;
         }
 
         .building {
           width: 90%;
-          position: absolute;
+          position: relative;
           top: 0px;
           left: 5%;
-          display: flex;
           height: 100%;
+          display: flex;
           flex-direction: column;
           justify-content: center;
         }
 
         @media only screen and (min-width: 1024px) {
-          aside {
+          #carousel {
             align-self: center;
+            max-width: 100%;
             position: relative;
-            width: 105%;
-            left: -10%;
-            border-radius: 0.5rem;
-            border: solid #0091ea 0.5rem;
+            right: 5%;
           }
 
-          main {
-            overflow: hidden;
-            position: relative;
-            top: 0%;
-            left: 10%;
-            width: 80%;
-            display: flex;
-            height: 100%;
-            flex-direction: column;
-            justify-content: center;
-          }
 
-          img {
-            position: relative;
+          .glide__slide {
             width: 100%;
+            height: 100%;
+            position: relative;
+            top: 0;
             left: 0;
           }
 
-          svg {
+          main {
+            margin: 0 0;
             width: 100%;
-            position: relative;
             align-self: center;
-            top: 0;
-            left: auto;
             overflow: visible;
           }
 
           .building {
             width: 70%;
-            position: absolute;
+            max-width: 450px;
+            position: relative;
             top: 0px;
-            left: 15%;
+            left: 10%;
             display: flex;
-            height: 100%;
             flex-direction: column;
             justify-content: center;
+          }
+
+          .building>* {
+            position: relative;
+            z-index: 1;
           }
         }
 
       </style>
 
       <main>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 439 382">
-          <path d="M401 85c39 61 49 169 5 229-31 42-107 69-189 68-100 0-150-40-172-68-52-62-58-174-13-237C72 23 134 0 208 0c85 0 152 22 193 85z">
-            <animate id="scrollUp" attributeName="d" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1" restart="whenNotActive" fill="freeze" to="M392 90c39 61 47 185 7 241-31 42-100 52-182 51-100 0-153-38-175-66-42-55-54-168-9-231C73 31 152 0 208 0c62 0 143 27 184 90z" begin="indefinite" dur="0.3s" />
-            <animate id="scrollDown" attributeName="d" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1" restart="whenNotActive" fill="freeze" to="M399 75c43 63 45 152 8 226-36 57-132 81-190 81-62 0-147-42-184-99-38-58-44-151 0-207C75 23 107 0 208 0c104 0 148 13 191 75z" begin="indefinite" dur="0.3s" />
-            <animate id="expand" attributeName="d" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1" restart="whenNotActive" fill="freeze" to="M402 80c39 61 54 171 10 231-31 42-113 72-195 71-100 0-152-40-174-68-49-56-58-178-13-241C70 19 134 0 208 0c85 0 153 17 194 80z" begin="indefinite" dur="0.15s" />
-            <animate id="backToStd" attributeName="d" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1" restart="whenNotActive" fill="freeze" to="M401 85c39 61 49 169 5 229-31 42-107 69-189 68-100 0-150-40-172-68-52-62-58-174-13-237C72 23 134 0 208 0c85 0 152 22 193 85z" begin="scrollUp.end+0.1s;scrollDown.end+0.1s;" dur="0.4s" />
-          </path>
-        </svg>
 
-        <div class="building" style="line-height: 1.3em">
+        <div class="building" id='currentBuilding' style="line-height: 1.3em">
           <h1 style="font-weight: lighter; font-size: 1.5em; line-height: 1.5em;">Chodov 2018 </h1>
           <p>A beatiful building. We offer different flats type 1+KK, 2+KK, and larger types 3+KK, 4+KK with terraces and front gardens. Modern living for people who want to live in Prague. A new block of flats called CHODOV2018 contains 75 flats and is located in a beautiful, quiet place with a direct walking distance either to the metro station Roztyly or Chodov, and the distance to OC Chodov shopping centre is 1600 m, which is just 20 minutes of walk. </p>
-          <a style="font-weight: lighter; font-size: 1.5em; padding-bottom: 0.5em; align-self: flex-end;" href="https://www.chodov2018.cz" rel="noopener" target="_blank">chodov2018.cz</a>
+          <a style="font-weight: lighter; font-size: 1.5em; padding: 0.5em 0; align-self: flex-end;" href="https://www.chodov2018.cz" rel="noopener" target="_blank">chodov2018.cz</a>
         </div>
       </main>
 
-      <aside style="cursor: pointer;">
-        <img src="/1.jpg">
-      </aside>
+      <div id="carousel" style="grid-area: aside; overflow: hidden;">
+        <div class="glide">
+          <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+              <li class="glide__slide"><img src="/1.jpg"></li>
+              <li class="glide__slide"><img src="/2.jpg"></li>
+              <li class="glide__slide"><img src="/3.jpg"></li>
+            </ul>
+          </div>
+          <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+              <i style="opacity: 1;" class="fas fa-chevron-left fa-2x"></i></button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i style="opacity: 1;" class="fas fa-chevron-right fa-2x"></i></button>
+          </div>
+          <div class="glide__bullets" data-glide-el="controls[nav]">
+            <button class="glide__bullet" data-glide-dir="=0"></button>
+            <button class="glide__bullet" data-glide-dir="=1"></button>
+            <button class="glide__bullet" data-glide-dir="=2"></button>
+          </div>
+        </div>
+
+      </div>
 
       <footer>
         <div class="collumn">
@@ -222,37 +222,19 @@
         }
 
       }
-
-
-      var lastScrollTop = 0;
-      var up = false;
-      var down = false;
-      // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
-      window.addEventListener("scroll", function () {
-        var st = window.pageYOffset || document.documentElement.scrollTop;
-        if (st >= lastScrollTop && down === false) {
-          // downscroll code
-          down = true;
-          up = false;
-          setTimeout(() => {
-            document.getElementById("scrollDown").beginElement();
-          }, 25);
-        } else if (st < lastScrollTop && up === false) {
-          // upscroll code
-          down = false;
-          up = true;
-          setTimeout(() => {
-            document.getElementById("scrollUp").beginElement();
-          }, 100);
-
-        }
-        lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-      }, false);
-
-      document.querySelector('aside').addEventListener('mouseenter', () => document.getElementById("expand").beginElement());
-      document.querySelector('aside').addEventListener('mouseleave', () => document.getElementById("backToStd").beginElement());
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script>
+      const config = {
+        type: 'slider',
+        focusAt: 'center',
+        gap: 20,
+        dragThreshold: 80,
+      }
+      var glide = new Glide('.glide', config)
+      glide.mount();
 
+    </script>
   </body>
 
 </html>

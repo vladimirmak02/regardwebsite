@@ -2,6 +2,7 @@ $background-transition: background-color 0.3s ease-out;
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;800&display=swap');
 
+
 $font-stack: 'Open Sans', sans-serif;
 
 html, body{
@@ -14,10 +15,14 @@ html, body{
   font-family: $font-stack;
 }
 
+#grid{
+  min-height: 100vh;
+}
+
 header {
   grid-area: header;
   position: sticky;
-  z-index: 2;
+  z-index: 3;
   top: 0;
   font-size: 45px;
   padding: 0.3em 0.3em 0.3em 0.3em;
@@ -120,28 +125,30 @@ header {
   }
 }
 
-main#indexMain{
+main{
   appearance: none;
   grid-area: main;
-  justify-self: center;
-  align-self: start;
-  letter-spacing: 1px;
+  &#indexMain{
+    justify-self: center;
+    align-self: start;
+    letter-spacing: 1px;
 
-  button {
-    background-color: var(--complementary-color);
-    color: var(--font-color);
-    border: none;
-    border-radius: 2rem;
-    padding: 1rem 1.5rem 1rem 1.5rem;
-    transition: $background-transition, opacity 0.2s;
-    font-size: 1.5rem;
-    cursor: pointer;
-    font-weight: lighter;
-    font-family: $font-stack;
-  }
+    button {
+      background-color: var(--complementary-color);
+      color: var(--font-color);
+      border: none;
+      border-radius: 2rem;
+      padding: 1rem 1.5rem 1rem 1.5rem;
+      transition: $background-transition, opacity 0.2s;
+      font-size: 1.5rem;
+      cursor: pointer;
+      font-weight: lighter;
+      font-family: $font-stack;
+    }
 
-  button:hover {
-    opacity: 0.85;
+    button:hover {
+      opacity: 0.85;
+    }
   }
 }
 
@@ -181,6 +188,24 @@ main#indexMain{
         width: 50%;
       }
     }
+  }
+}
+
+#currentBuilding{
+  overflow: visible;
+  &::before {
+    content: "";
+    position: absolute;
+    
+    width: 110%;
+    height: 120%;
+    top: -10%;
+    left: -5%;
+    z-index: 0;
+    background-color: #D1EDFF;
+    border-radius: 5rem;
+    opacity: 0.3;
+    transform: rotate(11deg);
   }
 }
 
@@ -262,7 +287,7 @@ svg{
 [data-theme="dark"] {
   --primary-color: #15001a;
   --primary-dark: #0c0713;
-  --primary-light: #4C3F5E;
+  --primary-light: #344065;
   --secondary-color: #666664;
   --font-color: #eee;
   --link-color: #0366d6;

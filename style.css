@@ -7,10 +7,14 @@ html, body {
   font-family: "Open Sans", sans-serif;
 }
 
+#grid {
+  min-height: 100vh;
+}
+
 header {
   grid-area: header;
   position: sticky;
-  z-index: 2;
+  z-index: 3;
   top: 0;
   font-size: 45px;
   padding: 0.3em 0.3em 0.3em 0.3em;
@@ -131,9 +135,12 @@ header nav {
   border: 2px solid var(--primary-color);
 }
 
-main#indexMain {
+main {
   appearance: none;
   grid-area: main;
+}
+
+main#indexMain {
   justify-self: center;
   align-self: start;
   letter-spacing: 1px;
@@ -203,6 +210,24 @@ main#indexMain button:hover {
     flex-basis: 50%;
     width: 50%;
   }
+}
+
+#currentBuilding {
+  overflow: visible;
+}
+
+#currentBuilding::before {
+  content: "";
+  position: absolute;
+  width: 110%;
+  height: 120%;
+  top: -10%;
+  left: -5%;
+  z-index: 0;
+  background-color: #D1EDFF;
+  border-radius: 5rem;
+  opacity: 0.3;
+  transform: rotate(11deg);
 }
 
 h3 {
@@ -285,7 +310,7 @@ svg {
 [data-theme="dark"] {
   --primary-color: #15001a;
   --primary-dark: #0c0713;
-  --primary-light: #4C3F5E;
+  --primary-light: #344065;
   --secondary-color: #666664;
   --font-color: #eee;
   --link-color: #0366d6;
