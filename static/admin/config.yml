@@ -8,6 +8,8 @@ backend:
     uploadMedia: '[skip ci] Upload “{{path}}”'
     deleteMedia: '[skip ci] Delete “{{path}}”'
 
+local_backend: true
+
 media_folder: static/img
 public_folder: /img
 
@@ -15,18 +17,55 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
-      - file: "src/pages/index.js"
-        label: "Landing Page"
+      - file: "src/pages/index.md"
+        label: "Homepage"
         name: "index"
         fields:
-          - {label: Title, name: title, widget: string}
-          - {label: Heading, name: heading, widget: string}
-          - {label: Subheading, name: subheading, widget: string}
-          - {label: Description, name: description, widget: string}
-      - file: "src/pages/about/index.js"
-        label: "About"
+          - {label: Slogan, name: title, widget: string}
+          - {label: "All Projects Button", name: allProjects, widget: string}
+          - {label: "Latest Project Text", name: latestProjectText, widget: string}
+          - {label: "Set Latest Project Automatically", name: "automaticLatest", widget: "boolean", default: true}
+          - {label: "URL of Latest Project with no spaces or special characters e.g. chodov-2018", name: latestProject, widget: string, required: false}
+      - file: "src/pages/about.md"
+        label: "About Page"
         name: "about"
         fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Body", name: "body", widget: "markdown"}
+          - {label: Title, name: title, widget: string}
+          - {label: "Short Description", name: shortDesc, widget: string}
+          - {label: "Long Description", name: longDesc, widget: markdown}
+          - {label: "Copyright Info", name: copyrightInfo, widget: string}
+  - name: "components"
+    label: "Components"
+    files:
+      - file: "src/components/contact.md"
+        label: "Contact Info"
+        name: "contact"
+        fields:
+          - {label: Name, name: name, widget: string}
+          - {label: "Role", name: role, widget: string}
+          - {label: "Phone Number", name: phone, widget: string}
+          - {label: "Email", name: email, widget: string}
+      - file: "src/components/navbar.md"
+        label: "Navigation Bar"
+        name: "navbar"
+        fields:
+          - {label: Home, name: home, widget: string}
+          - {label: "Projects", name: projects, widget: string}
+          - {label: "About", name: about, widget: string}
+  - name: projects
+    label: Projects
+    folder: projects
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { name: title, label: "Project Name", widget: string }
+      - { name: logo, label: Logo, widget: image }
+      - { name: dateStart, label: "Date of Construction Start", widget: date, format: "MM YYYY" }
+      - { name: dateEnd, label: "Date of Construction End", widget: datetime, format: "MM YYYY" , required: false }
+      - { name: area, label: Area, widget: number }
+      - { name: website, label: "URL of Project Website", widget: string, required: false}
+      - { name: images, label: "Pictures (Slideshow)", widget: list, field: { name: image, label: Picture, widget: image } }
+      - { name: shortDesc, label: "Short Description", widget: string }
+      - { name: longDesc, label: "Long Description", widget: markdown}
+
