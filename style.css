@@ -114,25 +114,18 @@ header nav {
 }
 
 #options {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
   text-align: center;
   font-size: 16px;
   font-weight: lighter;
 }
 
 #options .languages {
-  font-size: 1.5em;
+  font-size: 1.2em;
   padding: 1.5rem 0;
-}
-
-#options select {
-  background-color: var(--complementary-color);
-  border: none;
-  border-radius: 0.2em;
-  padding: 0.2em;
-}
-
-#options select option {
-  border: 2px solid var(--primary-color);
 }
 
 main {
@@ -288,6 +281,11 @@ a {
 
 a :visited {
   color: var(--link-color);
+}
+
+.languages [type=radio]:checked + label {
+  background-color: var(--complementary-color);
+  transition: background-color 0.3s ease-out;
 }
 
 svg {

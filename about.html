@@ -80,13 +80,58 @@
           </label>
           <i class="fas fa-moon fa-2x" onclick="javascript:if(!document.getElementById('checkbox').checked)document.getElementById('checkbox').click()"></i>
         </div>
+
+        <style>
+          .languages {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+          }
+
+          .languages [type=radio] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+          }
+
+
+
+          .languages label {
+            padding: 0.3em;
+            display: inline-block;
+            width: 100%;
+            text-align: left;
+            border-radius: 0em;
+            border-bottom: 0.1em solid #333;
+            cursor: pointer;
+          }
+
+          .languageSelect:last-child label {
+            border-bottom: none;
+          }
+
+          .languages label img {
+            display: inline-block;
+            width: auto;
+            padding-right: 1em;
+          }
+
+        </style>
+
         <div class="languages">
-          <label for="language-select">Lang:</label>
-          <select id="language-select">
-            <option value="en">English</option>
-            <option value="cz">Czech</option>
-            <option value="ru">Russian</option>
-          </select>
+          <div class="languageSelect">
+            <input type="radio" name="language" value="en" id="lang_en" checked onchange="if(event.target.checked) localStorage.setItem('language', event.target.value)" />
+            <label for="lang_en"><img src="/static/en.svg" width="32" height="18" />English</label>
+          </div>
+          <div class="languageSelect">
+            <input type="radio" name="language" value="cz" id="lang_cz" onchange="if(event.target.checked) localStorage.setItem('language', event.target.value)" />
+            <label for="lang_cz"><img src="/static/cz.svg" width="32" height="18" />Czech</label>
+          </div>
+          <div class="languageSelect">
+            <input type="radio" name="language" value="ru" id="lang_ru" onchange="if(event.target.checked) localStorage.setItem('language', event.target.value)" />
+            <label for="lang_ru"><img src="/static/ru.svg" width="32" height="18" />Russian</label>
+          </div>
         </div>
       </div>
       <i class="closebtn fas fa-times" onclick="toggleNav()"></i>

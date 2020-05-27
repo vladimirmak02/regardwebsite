@@ -102,26 +102,16 @@ header {
   
 }
 #options {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: start;
-  // align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
   text-align: center;
   font-size: 16px;
   font-weight: lighter;
   .languages{
-    font-size: 1.5em;
+    font-size: 1.2em;
     padding: 1.5rem 0;
-  }
-  select{
-    background-color: var(--complementary-color);
-    border: none;
-    border-radius: 0.2em;
-    padding: 0.2em;
-    option{
-      border: 2px solid var(--primary-color);
-
-    }
   }
 }
 
@@ -264,6 +254,11 @@ a {
   :visited{
     color: var(--link-color);
   }
+}
+
+.languages [type=radio]:checked+label {
+  background-color: var(--complementary-color);
+  transition: $background-transition;
 }
 
 svg{
