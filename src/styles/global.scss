@@ -1,0 +1,137 @@
+//--------------  IMPORT FONTS  --------------
+
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../../static/fonts/OpenSans-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../../static/fonts/OpenSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../../static/fonts/OpenSans-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+$font-stack: 'Open Sans', sans-serif;
+
+//--------------  COLORS & VARIABLES  --------------
+
+:root {
+  --primary-color: #0091ea;
+  --primary-dark: #0064b7;
+  --primary-light: #D1EDFF;
+  --secondary-color: #c0c0c0;
+  --font-color: #333;
+  --link-color: #0366d6;
+  --bg-color: #fff;
+  --light-text-color: #fff;
+  --complementary-color: #FFD8A3;
+  --background-transition: background-color 0.3s ease-out;
+}
+
+[data-theme="dark"] {
+  --primary-color: #15001a;
+  --primary-dark: #0c0713;
+  --primary-light: #344065;
+  --secondary-color: #666664;
+  --font-color: #d5d5d5;
+  --link-color: #0366d6;
+  --bg-color: #0b001a;
+  --light-text-color: #aaa;
+  --complementary-color: #884FDE;
+}
+
+//--------------  GLOBAL RULES  --------------
+
+a {
+  text-decoration: none;
+  color: var(--link-color);
+  :visited{
+    color: var(--link-color);
+  }
+}
+
+img{
+  object-fit: contain !important;
+}
+
+button{
+  border: none;
+  background-color: inherit;
+  color: inherit;
+  font: inherit;
+  font-size: inherit;
+  outline: none;
+  padding: 0;
+  text-shadow: inherit;
+}
+
+html, body{
+  // width: 100%;
+  // height: 100%;
+  font-size: 16px;
+  background-color: var(--bg-color);
+  transition: var(--background-transition);
+  color: var(--font-color);
+}
+
+.glide__bullet--active{background-color:#eee !important}
+
+//----------------------  CSS RESET  ----------------------
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  font-family: $font-stack;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+// HTML5 display-role reset for older browsers
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+

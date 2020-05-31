@@ -11,47 +11,143 @@ backend:
 local_backend: true
 
 media_folder: static/img
-public_folder: /img
+public_folder: ../static/img/
 
 collections:
   - name: "pages"
     label: "Pages"
+    editor:
+      preview: false
     files:
       - file: "src/pages/index.md"
         label: "Homepage"
         name: "index"
         fields:
-          - {label: Slogan, name: title, widget: string}
-          - {label: "All Projects Button", name: allProjects, widget: string}
-          - {label: "Latest Project Text", name: latestProjectText, widget: string}
-          - {label: "Set Latest Project Automatically", name: "automaticLatest", widget: "boolean", default: true}
-          - {label: "URL of Latest Project with no spaces or special characters e.g. chodov-2018", name: latestProject, widget: string, required: false}
+          - name: slogan
+            label: "Slogan"
+            widget: "object"
+            fields:
+              - { name: en, label: "EN", widget: string }
+              - { name: ru, label: "RU", widget: string }
+              - { name: cz, label: "CZ", widget: string }
+          - { name: "templateKey", label: "Template File", widget: "hidden", default: "index"}
+          - name: allProjectsBtn
+            label: "All Projects Button"
+            widget: "object"
+            fields:
+              - { name: en, label: "EN", widget: string }
+              - { name: ru, label: "RU", widget: string }
+              - { name: cz, label: "CZ", widget: string }
+          - name: latestProjectText
+            label: "Latest Project Text"
+            widget: "object"
+            fields:
+              - { name: en, label: "EN", widget: string }
+              - { name: ru, label: "RU", widget: string }
+              - { name: cz, label: "CZ", widget: string }
+      - file: "src/pages/allprojects.md"
+        label: "All Projects Page"
+        name: "allprojects"
+        fields:
+          - name: allProjects
+            label: "All projects Text"
+            widget: "object"
+            fields:
+              - { name: en, label: "EN", widget: string }
+              - { name: ru, label: "RU", widget: string }
+              - { name: cz, label: "CZ", widget: string }
+          - {label: "Sort Projects by Starting date (off) or Ending date (on)", name: "sortByEnd", widget: "boolean", default: true}
+          - { name: "templateKey", label: "Template File", widget: "hidden", default: "allprojects"}
       - file: "src/pages/about.md"
         label: "About Page"
         name: "about"
         fields:
-          - {label: Title, name: title, widget: string}
-          - {label: "Short Description", name: shortDesc, widget: string}
-          - {label: "Long Description", name: longDesc, widget: markdown}
-          - {label: "Copyright Info", name: copyrightInfo, widget: string}
+          - name: heading
+            label: Heading
+            widget: "object"
+            fields:
+              - { name: en, label: "EN", widget: string }
+              - { name: ru, label: "RU", widget: string }
+              - { name: cz, label: "CZ", widget: string }
+          - { name: "templateKey", label: "Template File", widget: "hidden", default: "about"}
+          - name: shortDesc
+            label: "Short Description"
+            widget: "object"
+            fields:
+              - { name: en, label: "EN", widget: string }
+              - { name: ru, label: "RU", widget: string }
+              - { name: cz, label: "CZ", widget: string }
+          - name: longDesc
+            label: "Long Description"
+            widget: "object"
+            fields:
+              - { name: en, label: "EN", widget: text }
+              - { name: ru, label: "RU", widget: text }
+              - { name: cz, label: "CZ", widget: text }
+          - name: copyrightInfo
+            label: "Copyright Info"
+            widget: "object"
+            fields:
+              - { name: en, label: "EN", widget: string }
+              - { name: ru, label: "RU", widget: string }
+              - { name: cz, label: "CZ", widget: string }
   - name: "components"
     label: "Components"
+    editor:
+      preview: false
     files:
       - file: "src/components/contact.md"
         label: "Contact Info"
         name: "contact"
         fields:
-          - {label: Name, name: name, widget: string}
-          - {label: "Role", name: role, widget: string}
+          - name: contactText
+            label: "Contact Text"
+            widget: "object"
+            fields:
+              - { name: en, label: "EN", widget: string }
+              - { name: ru, label: "RU", widget: string }
+              - { name: cz, label: "CZ", widget: string }
+          - name: name
+            label: Name
+            widget: "object"
+            fields:
+              - { name: en, label: "EN", widget: string }
+              - { name: ru, label: "RU", widget: string }
+              - { name: cz, label: "CZ", widget: string }
+          - name: role
+            label: Role
+            widget: "object"
+            fields:
+              - { name: en, label: "EN", widget: string }
+              - { name: ru, label: "RU", widget: string }
+              - { name: cz, label: "CZ", widget: string }
           - {label: "Phone Number", name: phone, widget: string}
           - {label: "Email", name: email, widget: string}
       - file: "src/components/navbar.md"
         label: "Navigation Bar"
         name: "navbar"
         fields:
-          - {label: Home, name: home, widget: string}
-          - {label: "Projects", name: projects, widget: string}
-          - {label: "About", name: about, widget: string}
+          - name: home
+            label: Home
+            widget: "object"
+            fields:
+              - { name: en, label: "EN", widget: string }
+              - { name: ru, label: "RU", widget: string }
+              - { name: cz, label: "CZ", widget: string }
+          - name: projects
+            label: Projects
+            widget: "object"
+            fields:
+              - { name: en, label: "EN", widget: string }
+              - { name: ru, label: "RU", widget: string }
+              - { name: cz, label: "CZ", widget: string }
+          - name: about
+            label: About
+            widget: "object"
+            fields:
+              - { name: en, label: "EN", widget: string }
+              - { name: ru, label: "RU", widget: string }
+              - { name: cz, label: "CZ", widget: string }
   - name: projects
     label: Projects
     folder: projects
@@ -59,13 +155,36 @@ collections:
     editor:
       preview: false
     fields:
-      - { name: title, label: "Project Name", widget: string }
-      - { name: logo, label: Logo, widget: image }
-      - { name: dateStart, label: "Date of Construction Start", widget: date, format: "MM YYYY" }
-      - { name: dateEnd, label: "Date of Construction End", widget: datetime, format: "MM YYYY" , required: false }
+      - { name: title, label: "Project Title for URL", widget: string }
+      - { name: "templateKey", label: "Template File", widget: "hidden", default: "project"}
+      - name: titleTranslated
+        label: "Title (Translated)"
+        widget: "object"
+        fields:
+          - { name: en, label: "EN", widget: string }
+          - { name: ru, label: "RU", widget: string }
+          - { name: cz, label: "CZ", widget: string }
+      - { name: logo, label: Logo, widget: image, required: false }
+      - { name: dateStart, label: "Date of Construction Start (US format)", widget: datetime, timeFormat: false }
+      - { name: dateEnd, label: "(Estimated) Date of Construction End (US format)", widget: datetime, timeFormat: false  }
       - { name: area, label: Area, widget: number }
       - { name: website, label: "URL of Project Website", widget: string, required: false}
+      - { name: video, label: "Embed URL of Youtube Video eg. https://www.youtube.com/embed/sGSahS4I8_c", widget: string, required: false}
+      - { name: address, label: "Address of the building", widget: string }
+      - { name: mainImage, label: "Main Image displayed on projects page and first in slideshow", widget: image }
       - { name: images, label: "Pictures (Slideshow)", widget: list, field: { name: image, label: Picture, widget: image } }
-      - { name: shortDesc, label: "Short Description", widget: string }
-      - { name: longDesc, label: "Long Description", widget: markdown}
+      - name: shortDesc
+        label: "Short Description"
+        widget: "object"
+        fields:
+          - { name: en, label: "EN", widget: string }
+          - { name: ru, label: "RU", widget: string }
+          - { name: cz, label: "CZ", widget: string }
+      - name: longDesc
+        label: "Long Description"
+        widget: "object"
+        fields:
+          - { name: en, label: "EN", widget: text }
+          - { name: ru, label: "RU", widget: text }
+          - { name: cz, label: "CZ", widget: text }
 

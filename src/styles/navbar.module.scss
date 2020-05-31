@@ -1,0 +1,175 @@
+.sidebar{
+  height: 100%; /* 100% Full-height */
+  width: 50%; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 12; /* Stay on top */
+  top: 0; /* Stay at the top */
+  right: -50%;
+  background-color: var(--secondary-color); /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: right 0.3s; /* 0.3 second transition effect to slide in the sidenav */
+  padding-top: 6rem;
+  transition-timing-function: ease-out;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  @media only screen and (min-width: 1024px) {
+    right: -25%;
+    width: 25%;
+  }
+  a{
+    color: var(--font-color);
+    font-size: 1.5rem;
+    font-weight: lighter;
+    padding: 0.3em;
+  }
+  .closebtn {
+    position: absolute;
+    padding: 0.3em;
+    top: -0.1em;
+    right: 0;
+    font-size: 45px;
+    @media only screen and (min-width: 1024px) {
+      font-size: 60px;
+    }
+  }
+  
+}
+
+.documentCover{
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  z-index: -1;  
+  background-color: #111;
+  opacity: 0; 
+  transition: opacity 0.3s;
+  display: block;
+}
+.documentCover.visible{
+  z-index: 11;  
+  opacity: 0.2; 
+}
+
+.languages {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.languages [type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.languages [type=radio]:checked+label {
+  background-color: var(--complementary-color);
+  transition: var(--background-transition);
+}
+
+.languages label {
+  padding: 0.3em;
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  border-radius: 0em;
+  border-bottom: 0.1em solid #333;
+  cursor: pointer;
+}
+
+.languageSelect:last-child label {
+  border-bottom: none;
+}
+
+.languages label img {
+  display: inline-block;
+  width: auto;
+  padding-right: 1em;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  font-size: 16px;
+  font-weight: lighter;
+  .languages{
+    font-size: 1.2em;
+    padding: 1.5rem 0;
+  }
+}
+
+//slider switch css ----------------------------------------
+
+.themeSwitchWrapper {
+  display: flex;
+  height: auto;
+  align-items: flex-end;
+  color: var(--font-color);
+  font-size: 34px;
+  em {
+    margin-left: 10px;
+    font-size: 1rem;
+  }
+}
+.themeSwitch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+  margin: 0 5px;
+}
+
+.themeSwitch input {
+  display: none;
+}
+
+.slider {
+  background-color: var(--primary-light);
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.3s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0.3s, var(--background-transition);
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: var(--primary-light);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+input:checked + .slider.round:before {
+  background-color: #CACACA;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+  background-color: var(--complementary-color);
+}

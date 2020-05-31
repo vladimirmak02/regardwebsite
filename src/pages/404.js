@@ -1,7 +1,11 @@
 import React from 'react'
+import { Link } from 'gatsby'
 
 const NotFoundPage = () => (
-  <h1>NOT FOUND</h1>
+  <div>
+    <h1>Page Not Found</h1>
+    <Link to="/">Back To Homepage</Link>
+  </div>
 )
 
 export default NotFoundPage

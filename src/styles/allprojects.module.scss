@@ -1,0 +1,131 @@
+.allProjectsPage {
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, auto);
+  grid-gap: 1rem;
+  grid-template-areas: "header"
+    "main"
+    "footer";
+}
+
+@media only screen and (min-width: 1024px) {
+  #grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-gap: 2rem;
+    grid-template-areas: "header"
+      "main"
+      "footer";
+  }
+}
+
+main {
+  position: relative;
+  width: 80%;
+  left: 10%;
+}
+
+article {
+  margin-top: 0.7rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1 0 50%;
+  max-width: 100%;
+}
+
+@media only screen and (min-width: 1024px) {
+  article {
+    margin-top: 0;
+  }
+
+  article>* {
+    margin: 0 2rem;
+  }
+}
+
+article h3 {
+  font-size: 1.3em;
+  line-height: 1.5em;
+  font-weight: lighter;
+  border-radius: 1.2em;
+  padding: 0.5em;
+  margin-bottom: 0.5rem;
+}
+
+
+h1 {
+  font-size: 2em;
+  line-height: 2em;
+  font-weight: lighter;
+}
+.buildings {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: stretch;
+  flex-flow: column nowrap;
+  
+  .building{
+    display: flex;
+    align-content: space-around;
+    justify-content: center;
+    margin-bottom: 2rem;
+    .buildingImg {
+      width: 100%;
+      @media only screen and (min-width: 1024px) {
+        width: 50%;
+      }
+    }
+    article{
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: flex-start;
+      line-height: 1.4em;
+      flex: 1 1 50%;
+      max-width: 100%;
+    }
+    &:nth-child(odd) {
+      flex-flow: row wrap;
+      h3{
+        background-color: var(--complementary-color);
+      }
+      @media only screen and (min-width: 1024px) {
+      .buildingImg {
+        position: relative;
+        right: 2%;
+      }
+      }
+    }
+    &:nth-child(even) {
+      flex-flow: row-reverse wrap;
+      h3{
+        background-color: var(--primary-light);
+      }
+      @media only screen and (min-width: 1024px) {
+      .buildingImg {
+        position: relative;
+        right: -2%;
+      }
+      }
+    }
+    .buildingInfo{
+      color: var(--font-color);
+    }
+    img {
+      border: none;
+      // border-radius: 0.5rem;
+      flex: 0 0 100%;
+      @media only screen and (min-width: 1024px) {
+        flex-basis: 50%;
+        width: 50%;
+      }
+    }
+  }
+  
+}
+}

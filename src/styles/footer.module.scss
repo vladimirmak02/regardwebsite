@@ -1,0 +1,66 @@
+.regardFooter {
+  color: var(--light-text-color);
+  grid-area: footer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 3rem;
+  background-color: var(--primary-dark);
+  transition: var(--background-transition);
+  @media only screen and (min-width: 1024px) {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  h3{
+    font-size: 1.4rem;
+    line-height: 1.3em;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    @media only screen and (min-width: 1024px) {
+      padding-top: 0em;
+    }
+    font-weight: 200;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--light-text-color);
+    opacity: 0.9;
+    :visited{
+      color: var(--light-text-color);
+    }
+  }
+  .collumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    div{
+      text-align: left;
+      white-space: nowrap
+    }
+  }
+  p{
+    @media only screen and (min-width: 1024px) {
+      max-width: 50%;
+    }
+    
+    line-height: 1.4em;
+    
+  }
+  h4{
+    line-height: 1.8em;
+    padding-top: 0.7em;
+    font-size: 1.2em;
+    font-weight: 200;
+  }
+  svg{
+    padding-right: 0.5em;
+  }
+
+  > * {
+    flex: 0 1 50%;
+  }
+}
