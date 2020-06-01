@@ -36,6 +36,16 @@
     max-width: 800px;
     margin: 0 auto;
   }
+  .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo{
+      height: 100%;
+      width: 30%;
+      padding: 1em;
+    }
+  }
 
 }
 

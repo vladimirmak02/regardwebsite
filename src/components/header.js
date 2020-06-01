@@ -17,6 +17,9 @@ export default function RegardHeader(props) {
             cz
             en
           }
+          companyImg {
+            publicURL
+          }
         }
       }
     }
@@ -24,12 +27,20 @@ export default function RegardHeader(props) {
     render={data => {
       return (
         <header className={headerStyles.regardHeader}>
-          <Helmet>
+          <Helmet
+            titleTemplate="Regard - %s"
+            defaultTitle="Regard">
             <meta charSet="utf-8" />
-            <title>Regard</title>
             <html lang={props.language === 'cz' ? 'cs' : props.language} />
-            <link rel="canonical" href={`/${props.language}/`} />
             <meta name="description" content={data.markdownRemark.frontmatter.shortDesc[props.language]} />
+            <script type="application/ld+json">{`
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "url": "regard.cz",
+                "logo": "${data.markdownRemark.frontmatter.companyImg.publicURL}"
+              }
+            `}</script>
           </Helmet>
           <Link to={`/${props.language}`}>REGARD</Link>
           <nav>

@@ -11,7 +11,7 @@ backend:
 local_backend: true
 
 media_folder: static/img
-public_folder: ../static/img/
+public_folder: ../../static/img/
 
 collections:
   - name: "pages"
@@ -56,7 +56,6 @@ collections:
               - { name: en, label: "EN", widget: string }
               - { name: ru, label: "RU", widget: string }
               - { name: cz, label: "CZ", widget: string }
-          - {label: "Sort Projects by Starting date (off) or Ending date (on)", name: "sortByEnd", widget: "boolean", default: true}
           - { name: "templateKey", label: "Template File", widget: "hidden", default: "allprojects"}
       - file: "src/pages/about.md"
         label: "About Page"
@@ -69,6 +68,7 @@ collections:
               - { name: en, label: "EN", widget: string }
               - { name: ru, label: "RU", widget: string }
               - { name: cz, label: "CZ", widget: string }
+          - { name: companyImg, label: "Regard Company Logo", widget: image }
           - { name: "templateKey", label: "Template File", widget: "hidden", default: "about"}
           - name: shortDesc
             label: "Short Description"
@@ -123,6 +123,7 @@ collections:
               - { name: cz, label: "CZ", widget: string }
           - {label: "Phone Number", name: phone, widget: string}
           - {label: "Email", name: email, widget: string}
+          - { name: address, label: "Address of the company", widget: string }
       - file: "src/components/navbar.md"
         label: "Navigation Bar"
         name: "navbar"
@@ -150,7 +151,7 @@ collections:
               - { name: cz, label: "CZ", widget: string }
   - name: projects
     label: Projects
-    folder: projects
+    folder: src/projects
     create: true
     editor:
       preview: false
@@ -164,7 +165,7 @@ collections:
           - { name: en, label: "EN", widget: string }
           - { name: ru, label: "RU", widget: string }
           - { name: cz, label: "CZ", widget: string }
-      - { name: logo, label: Logo, widget: image, required: false }
+      - { name: projectLogo, label: Logo, widget: image, required: false }
       - { name: dateStart, label: "Date of Construction Start (US format)", widget: datetime, timeFormat: false }
       - { name: dateEnd, label: "(Estimated) Date of Construction End (US format)", widget: datetime, timeFormat: false  }
       - { name: area, label: Area, widget: number }

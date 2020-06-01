@@ -5,6 +5,7 @@ import Img from "gatsby-image"
 import { Link, graphql } from 'gatsby'
 import allProjectsStyles from '../styles/allprojects.module.scss'
 import DateRange from '../components/daterange'
+import { Helmet } from 'react-helmet'
 
 export default function AllProjects(props) {
   let lang = props.pageContext.language
@@ -12,7 +13,11 @@ export default function AllProjects(props) {
   let allProjectsFields = props.data.allMarkdownRemark.edges
   return (
     <Layout className={allProjectsStyles.allProjectsPage} gridClass={allProjectsStyles.grid} context={props.pageContext}>
+      <Helmet>
+        <title itemProp="name" lang={lang}>{props.data.markdownRemark.frontmatter.allProjects[lang]}</title>
+      </Helmet>
       <main>
+        <h1>{props.data.markdownRemark.frontmatter.allProjects[lang]}</h1>
         <div className={allProjectsStyles.buildings}>
           {allProjectsFrontmatter.map((node, i) => {
             return (
@@ -54,7 +59,7 @@ export const query = graphql`
         mainImage {
           childImageSharp {
             fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid
             }
           }
         }
@@ -72,6 +77,15 @@ export const query = graphql`
         fields {
           slug
         }
+      }
+    }
+  }
+  markdownRemark(frontmatter: {templateKey: {eq: "allprojects"}}) {
+    frontmatter {
+      allProjects {
+        cz
+        en
+        ru
       }
     }
   }

@@ -4,7 +4,8 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode })
+    let slug = createFilePath({ node, getNode })
+    slug = slug === `/` ? slug : slug.replace(/\/$/, ``)
     createNodeField({
       node,
       name: `slug`,
@@ -46,14 +47,13 @@ exports.createPages = async ({ graphql, actions }) => {
   })
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     languages.forEach((lang) => {
+      let pathNoSlash = '/' + lang + node.fields.slug
       createPage({
-        path: '/' + lang + node.fields.slug,
+        path: pathNoSlash,
         component: path.resolve(
           `src/templates/${String(node.frontmatter.templateKey)}.js`
         ),
         context: {
-          // Data passed to context is available
-          // in page queries as GraphQL variables.
           slug: node.fields.slug,
           language: lang,
         },

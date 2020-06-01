@@ -2,16 +2,26 @@ import React from 'react'
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import aboutStyles from '../styles/about.module.scss'
+import { Helmet } from 'react-helmet'
+import Img from "gatsby-image"
 
 export default function About(props) {
   let lang = props.pageContext.language
   let frontmatter = props.data.markdownRemark.frontmatter
   return (
     <Layout className={aboutStyles.aboutPage} gridClass={aboutStyles.grid} context={props.pageContext}>
+      <Helmet>
+        <title itemProp="name" lang={lang}>{frontmatter.heading[lang]}</title>
+      </Helmet>
       <main>
         <div className={aboutStyles.aboutMain}>
           <div className={aboutStyles.aboutWrapper}>
-            <h1>{frontmatter.heading[lang]}</h1>
+            <div className={aboutStyles.title}>
+              <h1>{frontmatter.heading[lang]}</h1>
+              <div className={aboutStyles.logo}>
+                <Img fluid={frontmatter.companyImg.childImageSharp.fluid} alt="Regard Logo" />
+              </div>
+            </div>
             <p>{frontmatter.longDesc[lang]}</p>
           </div>
         </div>
@@ -28,6 +38,13 @@ export const query = graphql`
         en
         cz
         ru
+      }
+      companyImg {
+        childImageSharp {
+          fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+          }
+        }
       }
       longDesc {
         cz

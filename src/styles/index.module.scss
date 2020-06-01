@@ -16,31 +16,32 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, auto);
-    grid-gap: 2rem;
+    grid-gap: 1rem;
     grid-template-areas: "header header "
       "main aside"
       "footer footer";
   }
 }
 
-main {
+main{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-}
-
-main{
   appearance: none;
   grid-area: main;
   justify-self: center;
   align-self: start;
   letter-spacing: 1px;
   font-weight: lighter;
+  position: relative;
+  margin-top: 0;
+  width: 80%;
+  left: 0%;
   h2{
-    font-size: 1.5rem; 
-    margin-bottom: 1rem; 
-    line-height: 1em;
+    font-size: 1.6rem; 
+    margin-bottom: 0.5rem; 
+    line-height: 1.4em;
   }
   button {
     white-space: nowrap;
@@ -50,7 +51,7 @@ main{
     border-radius: 2rem;
     padding: 1rem 1.5rem 1rem 1.5rem;
     transition: var(--background-transition), opacity 0.2s;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     cursor: pointer;
     font-weight: lighter;
     display: flex;
@@ -62,78 +63,76 @@ main{
   }
 }
 
-@media only screen and (min-width: 1024px) {
-  aside {
-    z-index: 3;
-  }
-}
-
 aside {
-  overflow: hidden;
+  grid-area: aside;
+  align-self: start;
   position: relative;
-  top: 0%;
+  margin-top: 5%;
   left: 0%;
   width: 100%;
 }
 
-.blob{
+.blob {
+  width: 100%;
+  overflow: hidden;
+  svg{
   fill: var(--primary-light);
   transition: fill 0.3s;
-}
-
-aside {
-  grid-area: aside;
-  // justify-self: center;
-  align-self: start;
-}
-
-main {
-  position: relative;
-  margin-top: 0;
-  width: 80%;
-  left: 0%;
-}
-
-.lastBuilding img {
-  position: relative;
-  width: 140%;
-  left: -20%;
-  padding-bottom: 0.5rem;
-}
-
-.blob {
   width: 120%;
   position: relative;
   top: 0%;
   left: -10%;
   z-index: 1;
+  }
 }
 
 .lastBuilding {
   width: 90%;
   text-align: right;
   position: absolute;
-  top: 0px;
+  top: 0;
   left: 5%;
   display: flex;
-  height: 100%;
+  height: 85%;
   flex-direction: column;
   justify-content: center;
   z-index: 2; 
   line-height: 1.5em;
+  overflow: visible;
+  p{
+    text-align: left;
+  }
+  &> a:nth-child(2) div:first-child { //image inside blob
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 0;
+    height: 0;
+    margin-bottom: 0.5rem;
+  }
+
   :not(a){
     color: var(--font-color);
+    path { //svg for link
+      color: var(--link-color);
+    }
   }
   
-  h2 {
+  &> a:first-child { //latest project title
     text-align: left; 
-    font-size: 1.8em; 
+    font-size: 1.45rem; 
+    
     line-height: 2em;
     font-weight: lighter; 
+    align-self: flex-start;
+    padding: 0.3em 0.5em 2em 0.3em;
+    margin: -0.3em -0.5em -2em -0.3em;
+    background-color: var(--primary-light);
+    border-radius: 3.5rem;
   }
   h3{
-    font-size: 1.3em;
-    text-transform: uppercase;
+    font-size: 1.45rem;
+    text-align: left; 
   }
 }
 
@@ -151,27 +150,35 @@ main {
     top: 0%;
     left: -10%;
     width: 80%;
-  }
-
-  .lastBuilding img {
-    position: relative;
-    width: 100%;
-    left: -0%;
+    z-index: 3;
+    margin-top: -0%;
   }
 
   .blob {
+    overflow: visible;
+  svg{
     width: 120%;
     position: relative;
     top: 0%;
     left: -10%;
     z-index: 1;
   }
+  }
 
   .lastBuilding {
     width: 80%;
+    height: 100%;
     position: absolute;
     top: 0%;
     left: 10%;
+    & > a:nth-child(2) div:first-child { //image inside blob
+      position: relative;
+      width: 120%;
+      padding-bottom: 67.5%; /* 16:9 -- so 56.25 x 120% */
+      padding-top: 0;
+      height: 0;
+      left: -10%;
+    }
   }
 }
 

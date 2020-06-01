@@ -34,17 +34,46 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
+    if (this.props.slug === '/') {
+      const storedLang = localStorage.getItem("language");
+      const preferredLang = window.navigator.language;
+      if (storedLang) {
+        document.querySelector(`[for=lang_${storedLang}] a`).click()
+      } else if (preferredLang) {
+        switch (true) {
+          case /en/.test(preferredLang):
+            document.querySelector(`[for=lang_en] a`).click()
+            break;
+          case /ru/.test(preferredLang):
+            document.querySelector(`[for=lang_ru] a`).click()
+            break;
+          default:
+            break;
+        }
+      }
+    }
+
     const toggleSwitch = document.querySelector(
       `.${navbarStyles.themeSwitch} input[type="checkbox"]`
     );
 
-    const currentTheme = localStorage.getItem("theme");
+    const preferredTheme = (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+    const storedTheme = localStorage.getItem("theme");
 
-    if (currentTheme) {
-      document.documentElement.setAttribute("data-theme", currentTheme);
+    if (storedTheme) {
+      document.documentElement.setAttribute("data-theme", storedTheme);
 
-      if (currentTheme === "dark") {
+      if (storedTheme === "dark") {
         toggleSwitch.checked = true;
+      }
+    } else if (preferredTheme) {
+      document.documentElement.setAttribute("data-theme", preferredTheme);
+
+      if (preferredTheme === "dark") {
+        toggleSwitch.checked = true;
+        darkTheme()
+      } else {
+        lightTheme()
       }
     }
 
@@ -122,7 +151,7 @@ class Navbar extends React.Component {
                       <div className={navbarStyles.languageSelect} key={i}>
                         <input type="radio" name="language" value={lang[0]} id={`lang_${lang[0]}`} checked={lang[0] === currentLanguage ? true : false} readOnly />
                         <label htmlFor={`lang_${lang[0]}`}>
-                          <Link to={`/${lang[0]}${props.slug}`}>
+                          <Link onClick={() => localStorage.setItem("language", lang[0])} to={`/${lang[0]}${(props.slug === '/' ? '' : props.slug)}`}>
                             <img src={`../../img/${lang[0]}.svg`} alt="" width="32" height="18" />
                             {lang[1]}
                           </Link>
@@ -133,7 +162,7 @@ class Navbar extends React.Component {
                 </div>
               </div >
               <IconButton ariaLabel="Close navigation menu" className={navbarStyles.closebtn} onClick={toggleNav}><FaTimes /></IconButton>
-              <Link to={`/${currentLanguage}/`}>{frontMatter.home[currentLanguage]}</Link>
+              <Link to={`/${currentLanguage}`}>{frontMatter.home[currentLanguage]}</Link>
               <Link to={`/${currentLanguage}/allprojects`}>{frontMatter.projects[currentLanguage]}</Link>
               <Link to={`/${currentLanguage}/about`}>{frontMatter.about[currentLanguage]}</Link>
             </nav >

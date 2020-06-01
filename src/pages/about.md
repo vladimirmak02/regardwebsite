@@ -3,6 +3,7 @@ heading:
   en: About
   cz: O společnosti
   ru: О компании
+companyImg: ../../static/img/regard logo.png
 templateKey: about
 shortDesc:
   en: Regard is a development company founded in 1999. Our mission is to build

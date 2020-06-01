@@ -17,6 +17,7 @@ export default function RegardHeader(props) {
               en
               cz
             }
+            address
             name {
               ru
               en
@@ -65,7 +66,7 @@ export default function RegardHeader(props) {
           </div>
           <div className={footerStyles.collumn}>
             <h3>{contactFrontMatter.contactText[lang]}</h3>
-            <Address location="Na Dolnici 2674, Praha"></Address>
+            <Address location={contactFrontMatter.address}></Address>
             <div className={footerStyles.contactInfo}>
               <div className={footerStyles.nameRole}>
                 <h4>{contactFrontMatter.name[lang]}</h4>

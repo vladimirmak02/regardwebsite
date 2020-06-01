@@ -10,6 +10,7 @@ import glideThemeStyles from '../styles/glide.theme.min.module.css'
 import DateRange from '../components/daterange'
 import Address from '../components/address'
 import Glide from '@glidejs/glide'
+import { Helmet } from 'react-helmet';
 
 class Slideshow extends React.Component {
   componentDidMount() {
@@ -29,7 +30,7 @@ class Slideshow extends React.Component {
     let frontMatter = this.props.frontmatter
     let buttons = []
     for (let i = 0; i <= (frontMatter.video ? frontMatter.images.length + 1 : frontMatter.images.length); i++) {
-      buttons.push((<button className={glideStyles.glide__bullet} data-glide-dir={`=${i}`} key={i} ></button >))
+      buttons.push((<button className={glideStyles.glide__bullet} aria-label={`Go to slide ${i}`} data-glide-dir={`=${i}`} key={i} ></button >))
     }
     return (
       <div className={glideStyles.glide + ' ' + projectStyles.carousel}>
@@ -45,8 +46,8 @@ class Slideshow extends React.Component {
           </ul>
         </div>
         <div className={glideStyles.glide__arrows} data-glide-el="controls">
-          <button className={glideStyles.glide__arrow + ' ' + glideStyles.glide__arrow__left} data-glide-dir="<"><FaChevronLeft /></button>
-          <button className={glideStyles.glide__arrow + ' ' + glideStyles.glide__arrow__right} data-glide-dir=">"><FaChevronRight /></button>
+          <button aria-label="Previous Photo is Slideshow" className={glideStyles.glide__arrow + ' ' + glideStyles.glide__arrow__left} data-glide-dir="<"><FaChevronLeft /></button>
+          <button aria-label="Next Photo is Slideshow" className={glideStyles.glide__arrow + ' ' + glideStyles.glide__arrow__right} data-glide-dir=">"><FaChevronRight /></button>
         </div>
         <div className={glideStyles.glide__bullets} data-glide-el="controls[nav]">
           {buttons}
@@ -61,9 +62,15 @@ export default function Project(props) {
   let frontMatter = props.data.markdownRemark.frontmatter
   return (
     <Layout className={projectStyles.projectPage} gridClass={projectStyles.grid} context={props.pageContext}>
+      <Helmet>
+        <title itemProp="name" lang={lang}>{frontMatter.titleTranslated[lang]}</title>
+      </Helmet>
       <main>
         <div className={projectStyles.building + ' ' + projectStyles.currentBuilding} >
           <h1>{frontMatter.titleTranslated[lang]}</h1>
+          {frontMatter.projectLogo ? (<div className={projectStyles.titleImg}>
+            <Img fluid={frontMatter.projectLogo.childImageSharp.fluid} imgStyle={{ objectFit: 'contain' }} alt="Project Logo" />
+          </div>) : null}
           <Address location={frontMatter.address} />
           <p>{frontMatter.longDesc[lang]}</p>
           <br />
@@ -83,58 +90,58 @@ export default function Project(props) {
 }
 
 export const query = graphql`
-  query($slug: String!) {
-    file(childMarkdownRemark: {frontmatter: {templateKey: {eq: "index"}}}) {
-      childMarkdownRemark {
-        frontmatter {
-          allProjectsBtn {
-            en
-            ru
-            cz
-          }
-        }
-      }
-    }
-            markdownRemark(fields: {slug: {eq: $slug } }) {
-            frontmatter {
-            titleTranslated {
-            en
+query ($slug: String!) {
+  file(childMarkdownRemark: {frontmatter: {templateKey: {eq: "index"}}}) {
+    childMarkdownRemark {
+      frontmatter {
+        allProjectsBtn {
+          en
           ru
           cz
         }
-        website
-        video
-        longDesc {
-            cz
-          ru
-          en
-        }
-        dateStart
-        dateEnd
-        address
-        area
-        mainImage {
-            childImageSharp {
-            fluid(maxWidth: 1200) {
+      }
+    }
+  }
+  markdownRemark(fields: {slug: {eq: $slug}}) {
+    frontmatter {
+      titleTranslated {
+        en
+        ru
+        cz
+      }
+      website
+      video
+      longDesc {
+        cz
+        ru
+        en
+      }
+      dateStart
+      dateEnd
+      address
+      area
+      mainImage {
+        childImageSharp {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid
           }
-          }
         }
-        logo {
-            childImageSharp {
-            fluid(maxWidth: 1200) {
+      }
+      projectLogo {
+        childImageSharp {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid
           }
-          }
         }
-        images {
-            childImageSharp {
-            fluid(maxWidth: 1200) {
+      }
+      images {
+        childImageSharp {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid
-          }
           }
         }
       }
     }
   }
+}
 `

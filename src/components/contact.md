@@ -13,4 +13,5 @@ role:
   cz: Jednatel
 phone: +420 774 800 000
 email: dl@regard.cz
+address: Na Dolnici 2674, Praha
 ---

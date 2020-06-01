@@ -16,8 +16,8 @@
   .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto auto auto;
-    grid-gap: 2rem;
+    grid-template-rows: auto minmax(60%, auto) auto;
+    grid-gap: 1rem;
     grid-template-areas: "header header "
       "main aside"
       "footer footer";
@@ -80,6 +80,21 @@ main {
   p {
     text-align: justify;
   }
+  .titleImg{
+    order: -1;
+    height: 6em;
+    width: 6em;
+    align-self: flex-end;
+    position: absolute;
+    top: 0;
+    padding: 0.7em;
+    border-radius: 50%;
+    background-color: #FFF;
+    div{
+      margin: 0px auto;
+      height: 100%;
+    }
+  }
   button {
     background-color: var(--complementary-color);
     color: var(--font-color);
@@ -116,7 +131,7 @@ main {
   main {
     margin: 0 0;
     width: 100%;
-    align-self: center;
+    align-self: flex-start;
     overflow: visible;
   }
 
