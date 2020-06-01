@@ -122,21 +122,21 @@ query ($slug: String!) {
       area
       mainImage {
         childImageSharp {
-          fluid(maxWidth: 1200) {
+          fluid {
             ...GatsbyImageSharpFluid
           }
         }
       }
       projectLogo {
         childImageSharp {
-          fluid(maxWidth: 1200) {
+          fluid(maxWidth: 200) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       images {
         childImageSharp {
-          fluid(maxWidth: 1200) {
+          fluid {
             ...GatsbyImageSharpFluid
           }
         }
