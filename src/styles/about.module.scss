@@ -1,0 +1,42 @@
+.aboutPage{
+.grid {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-gap: 1.5em;
+  grid-template-areas: "header"
+    "main"
+    "footer";
+}
+
+
+
+.aboutMain {
+  position: relative;
+  margin: 0 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  line-height: 1.4em;
+  text-align: justify;
+  background: linear-gradient(135deg, var(--primary-color), var(--complementary-color));
+  padding: 0.3rem;
+  .aboutWrapper {
+    padding: 1em;
+    background-color: var(--bg-color);
+  }
+  h1{
+    font-size: 2em;
+    font-weight: 200;
+    line-height: 2em;
+  }
+  @media only screen and (min-width: 1024px) {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+}
+
+}

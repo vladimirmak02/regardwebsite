@@ -4,7 +4,7 @@ import Img from "gatsby-image"
 import ExternalLink from '../components/externalLink'
 import indexStyles from '../styles/index.module.scss'
 import { Link, graphql } from 'gatsby'
-import { FaChevronCircleRight } from 'react-icons/fa'
+import { FaArrowCircleRight } from 'react-icons/fa'
 
 class SvgBlob extends React.Component {
   constructor(props) {
@@ -28,34 +28,35 @@ class SvgBlob extends React.Component {
 
   componentWillUnmount() {
     document.removeEventListener('scroll', this.handleScroll);
+    this.handleScroll = false;
   }
 
   animateBlob(st) {
-    try {
-      if (st >= this.lastScrollTop && this.down === false) {
-        // downscroll code
-        this.down = true;
-        this.up = false;
-        setTimeout(() => {
-          document.getElementById("scrollDown").beginElement();
-        }, 25);
-      } else if (st < this.lastScrollTop && this.up === false) {
-        // upscroll code
-        this.down = false;
-        this.up = true;
-        setTimeout(() => {
-          document.getElementById("scrollUp").beginElement();
-        }, 100);
-      }
-      this.lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-    } catch{
-      document.removeEventListener('scroll', this.handleScroll);
+    if (st >= this.lastScrollTop && this.down === false && this.handleScroll) {
+
+      // downscroll code
+      this.down = true;
+      this.up = false;
+      setTimeout(() => {
+        document.getElementById("scrollDown").beginElement();
+      }, 25);
+    } else if (st < this.lastScrollTop && this.up === false && this.handleScroll) {
+      // upscroll code
+      this.down = false;
+      this.up = true;
+      setTimeout(() => {
+        document.getElementById("scrollUp").beginElement();
+      }, 100);
     }
+    else if (!this.handleScroll) {
+      return
+    }
+    this.lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
   }
 
   handleScroll() {
     var st = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    if (!this.ticking) {
+    if (!this.ticking && this.handleScroll) {
       window.requestAnimationFrame(function () {
         this.animateBlob(st);
         this.ticking = false;
@@ -91,7 +92,7 @@ export default function Home(props) {
     <Layout className={indexStyles.indexPage} gridClass={indexStyles.grid} context={props.pageContext}>
       <main>
         <h2>{indexFrontMatter.slogan[lang]}</h2>
-        <Link to={`/${lang}/allprojects`}><button>{indexFrontMatter.allProjectsBtn[lang]}<FaChevronCircleRight style={{ paddingLeft: '0.7em' }} /></button></Link>
+        <Link to={`/${lang}/allprojects`}><button>{indexFrontMatter.allProjectsBtn[lang]}<FaArrowCircleRight style={{ paddingLeft: '0.7em' }} /></button></Link>
       </main>
 
       <aside>
@@ -99,7 +100,7 @@ export default function Home(props) {
         <div className={indexStyles.lastBuilding}>
           <Link to={`/${lang}${props.data.allMarkdownRemark.edges[0].node.fields.slug}`}>
             <h2>{indexFrontMatter.latestProjectText[lang]}</h2>
-            <Img fluid={lastBuildingFrontMatter.mainImage.childImageSharp.fluid} alt="Main image for latest project" />
+            <Img imgStyle={{ objectFit: 'contain' }} fluid={lastBuildingFrontMatter.mainImage.childImageSharp.fluid} alt="Main image for latest project" />
             <h3>{lastBuildingFrontMatter.titleTranslated[lang]}</h3>
             <p>{lastBuildingFrontMatter.shortDesc[lang]}</p>
           </Link>

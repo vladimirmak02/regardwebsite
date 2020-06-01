@@ -2,7 +2,8 @@ import React from "react"
 import { Link, graphql, StaticQuery } from 'gatsby'
 import footerStyles from '../styles/footer.module.scss'
 import Address from './address'
-import { FaPhoneAlt, FaEnvelope, FaIdBadge } from 'react-icons/fa'
+import { FaPhoneAlt, FaEnvelope } from 'react-icons/fa'
+import { BsPerson } from 'react-icons/bs'
 
 export default function RegardHeader(props) {
   return (<StaticQuery
@@ -65,11 +66,15 @@ export default function RegardHeader(props) {
           <div className={footerStyles.collumn}>
             <h3>{contactFrontMatter.contactText[lang]}</h3>
             <Address location="Na Dolnici 2674, Praha"></Address>
-            <div>
-              <h4>{contactFrontMatter.name[lang]}</h4>
-              <p><FaIdBadge />  {contactFrontMatter.role[lang]}</p>
-              <p><FaEnvelope />  {contactFrontMatter.email}</p>
-              <p><FaPhoneAlt />  {contactFrontMatter.phone}</p>
+            <div className={footerStyles.contactInfo}>
+              <div className={footerStyles.nameRole}>
+                <h4>{contactFrontMatter.name[lang]}</h4>
+                <h5>{contactFrontMatter.role[lang]}</h5>
+              </div>
+              <BsPerson />
+              <a href={`mailto:${contactFrontMatter.email}`}><FaEnvelope />  {contactFrontMatter.email}</a>
+              <br />
+              <a href={`tel:${contactFrontMatter.phone}`}><FaPhoneAlt />  {contactFrontMatter.phone}</a>
             </div>
           </div>
         </footer>

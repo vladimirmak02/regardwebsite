@@ -18,7 +18,7 @@ export default function AllProjects(props) {
             return (
               <div className={allProjectsStyles.building} key={i}>
                 <Link className={allProjectsStyles.buildingImg} to={`/${lang}${allProjectsFields[i].node.fields.slug}`}>
-                  <Img fluid={node.frontmatter.mainImage.childImageSharp.fluid} alt={node.frontmatter.titleTranslated[lang]} />
+                  <Img imgStyle={{ objectFit: 'contain' }} fluid={node.frontmatter.mainImage.childImageSharp.fluid} alt={node.frontmatter.titleTranslated[lang]} />
                 </Link>
                 <article>
                   <Link className={allProjectsStyles.buildingInfo} to={`/${lang}${allProjectsFields[i].node.fields.slug}`}>

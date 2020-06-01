@@ -2,12 +2,13 @@ import React from 'react'
 import Layout from '../components/layout'
 import ExternalLink from '../components/externalLink'
 import Img from "gatsby-image"
-import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
-import { graphql } from 'gatsby'
+import { FaChevronRight, FaChevronLeft, FaArrowCircleLeft } from 'react-icons/fa';
+import { Link, graphql } from 'gatsby'
 import projectStyles from '../styles/project.module.scss'
 import glideCoreStyles from '../styles/glide.core.min.module.css'
 import glideThemeStyles from '../styles/glide.theme.min.module.css'
 import DateRange from '../components/daterange'
+import Address from '../components/address'
 import Glide from '@glidejs/glide'
 
 class Slideshow extends React.Component {
@@ -27,19 +28,18 @@ class Slideshow extends React.Component {
     let glideStyles = { ...glideCoreStyles, ...glideThemeStyles }
     let frontMatter = this.props.frontmatter
     let buttons = []
-    console.log(frontMatter)
-    for (let i = 0; i <= frontMatter.images.length; i++) {
+    for (let i = 0; i <= (frontMatter.video ? frontMatter.images.length + 1 : frontMatter.images.length); i++) {
       buttons.push((<button className={glideStyles.glide__bullet} data-glide-dir={`=${i}`} key={i} ></button >))
     }
     return (
-      <div className={glideStyles.glide}>
+      <div className={glideStyles.glide + ' ' + projectStyles.carousel}>
         <div className={glideStyles.glide__track} data-glide-el="track">
           <ul className={glideStyles.glide__slides}>
-            {frontMatter.video ? (<li className={glideStyles.glide__slide}><div><iframe width="560" height="349" src={frontMatter.video} title="Building Video" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe></div></li>) : null}
-            <li className={glideStyles.glide__slide}><Img fluid={frontMatter.mainImage.childImageSharp.fluid} alt="Main Image" /></li>
+            {frontMatter.video ? (<li className={glideStyles.glide__slide}><div><iframe width="560" height="349" src={frontMatter.video + '?rel=0'} title="Building Video" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe></div></li>) : null}
+            <li className={glideStyles.glide__slide}><Img imgStyle={{ objectFit: 'contain' }} fluid={frontMatter.mainImage.childImageSharp.fluid} alt="Main Image" /></li>
             {frontMatter.images.map((image, i) => {
               return (
-                <li className={glideStyles.glide__slide} key={i}><Img fluid={image.childImageSharp.fluid} alt={`Image Slide ${i}`} /></li>
+                <li className={glideStyles.glide__slide} key={i}><Img imgStyle={{ objectFit: 'contain' }} fluid={image.childImageSharp.fluid} alt={`Image Slide ${i}`} /></li>
               )
             })}
           </ul>
@@ -64,21 +64,37 @@ export default function Project(props) {
       <main>
         <div className={projectStyles.building + ' ' + projectStyles.currentBuilding} >
           <h1>{frontMatter.titleTranslated[lang]}</h1>
+          <Address location={frontMatter.address} />
           <p>{frontMatter.longDesc[lang]}</p>
           <br />
           <DateRange start={frontMatter.dateStart} end={frontMatter.dateEnd} language={lang} />
-          <ExternalLink href={frontMatter.website}>{frontMatter.website}</ExternalLink>
+          {frontMatter.website ? <ExternalLink href={frontMatter.website}>{frontMatter.website}</ExternalLink> : null}
+          <br />
+          <Link to={`/${lang}/allprojects`}><button><FaArrowCircleLeft style={{ paddingRight: '0.3em' }} />{props.data.file.childMarkdownRemark.frontmatter.allProjectsBtn[lang]}</button></Link>
         </div>
       </main>
-      <aside className={projectStyles.carousel}>
-        <Slideshow frontmatter={frontMatter} />
+      <aside>
+        <div className={projectStyles.carouselWrapper}>
+          <Slideshow frontmatter={frontMatter} />
+        </div>
       </aside>
-    </Layout>
+    </Layout >
   )
 }
 
 export const query = graphql`
   query($slug: String!) {
+    file(childMarkdownRemark: {frontmatter: {templateKey: {eq: "index"}}}) {
+      childMarkdownRemark {
+        frontmatter {
+          allProjectsBtn {
+            en
+            ru
+            cz
+          }
+        }
+      }
+    }
             markdownRemark(fields: {slug: {eq: $slug } }) {
             frontmatter {
             titleTranslated {
@@ -95,6 +111,7 @@ export const query = graphql`
         }
         dateStart
         dateEnd
+        address
         area
         mainImage {
             childImageSharp {

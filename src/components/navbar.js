@@ -13,16 +13,12 @@ export function toggleNav() {
   if (sidebarOpen === false) {
     // open
     documentCover.classList.add(navbarStyles.visible);
-    sidebar.style.right = "0";
+    sidebar.style.transform = "translateX(-100%)";
     sidebarOpen = true;
   } else {
     // close
     documentCover.classList.remove(navbarStyles.visible);
-    if (window.matchMedia("(min-width: 1024px)").matches) {
-      sidebar.style.right = "-25%";
-    } else {
-      sidebar.style.right = "-50%";
-    }
+    sidebar.style.transform = "translateX(0%)";
     sidebarOpen = false;
   }
 }

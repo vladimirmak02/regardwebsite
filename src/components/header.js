@@ -31,7 +31,7 @@ export default function RegardHeader(props) {
             <link rel="canonical" href={`/${props.language}/`} />
             <meta name="description" content={data.markdownRemark.frontmatter.shortDesc[props.language]} />
           </Helmet>
-          <Link to="/">REGARD</Link>
+          <Link to={`/${props.language}`}>REGARD</Link>
           <nav>
             <IconButton className="nav-btn" id="openNav" onClick={toggleNav} ariaLabel="Open navigation menu"  ><FaBars /></IconButton>
           </nav>
