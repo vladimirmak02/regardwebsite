@@ -42,7 +42,7 @@ export default function RegardHeader(props) {
               }
             `}</script>
           </Helmet>
-          <h1><Link to={`/${props.language}`}>REGARD</Link></h1>
+          <h1><Link to={`/${props.language}`}>Regard</Link></h1>
           <nav>
             <IconButton className="nav-btn" id="openNav" onClick={toggleNav} ariaLabel="Open navigation menu"  ><FaBars /></IconButton>
           </nav>

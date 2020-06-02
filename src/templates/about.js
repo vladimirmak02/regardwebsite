@@ -11,13 +11,13 @@ export default function About(props) {
   return (
     <Layout className={aboutStyles.aboutPage} gridClass={aboutStyles.grid} context={props.pageContext}>
       <Helmet>
-        <title itemProp="name" lang={lang}>{frontmatter.heading[lang]}</title>
+        <title itemProp="name" lang={lang === 'cz' ? 'cs' : lang}>{frontmatter.heading[lang]}</title>
       </Helmet>
       <main>
         <div className={aboutStyles.aboutMain}>
           <div className={aboutStyles.aboutWrapper}>
             <div className={aboutStyles.title}>
-              <h1 className={aboutStyles.h1Title}>{frontmatter.heading[lang]}</h1>
+              <h2 className={aboutStyles.h1Title}>{frontmatter.heading[lang]}</h2>
               <div className={aboutStyles.logo}>
                 <Img fluid={frontmatter.companyImg.childImageSharp.fluid} alt="Regard Logo" />
               </div>

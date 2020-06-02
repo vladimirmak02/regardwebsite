@@ -91,13 +91,10 @@ export default function Home(props) {
   let indexFrontMatter = props.data.markdownRemark.frontmatter
   let lastBuildingFrontMatter = props.data.allMarkdownRemark.nodes[0].frontmatter
   props.pageContext.path = props.path
-  console.log(props)
   return (
     <Layout className={indexStyles.indexPage} gridClass={indexStyles.grid} context={props.pageContext}>
-      {lang === 'cz' ? (<Helmet><link rel="canonical" href={`/${props.language}`} /></Helmet>) : null}
-      <Helmet>
-        <title itemProp="name" lang={lang}>Home</title>
-      </Helmet>
+      {lang === 'cz' && props.path !== '/' ? (<Helmet><link rel="canonical" href={`/`} /></Helmet>) : null}
+
       <main>
         <h2>{indexFrontMatter.slogan[lang]}</h2>
         <Link to={`/${lang}/allprojects`}><button>{indexFrontMatter.allProjectsBtn[lang]}<FaArrowCircleRight style={{ paddingLeft: '0.7em' }} /></button></Link>

@@ -14,10 +14,10 @@ export default function AllProjects(props) {
   return (
     <Layout className={allProjectsStyles.allProjectsPage} gridClass={allProjectsStyles.grid} context={props.pageContext}>
       <Helmet>
-        <title itemProp="name" lang={lang}>{props.data.markdownRemark.frontmatter.allProjects[lang]}</title>
+        <title itemProp="name" lang={lang === 'cz' ? 'cs' : lang}>{props.data.markdownRemark.frontmatter.allProjects[lang]}</title>
       </Helmet>
       <main>
-        <h1 className={allProjectsStyles.projectsTitle}>{props.data.markdownRemark.frontmatter.allProjects[lang]}</h1>
+        <h2 className={allProjectsStyles.projectsTitle}>{props.data.markdownRemark.frontmatter.allProjects[lang]}</h2>
         <div className={allProjectsStyles.buildings}>
           {allProjectsFrontmatter.map((node, i) => {
             return (

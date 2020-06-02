@@ -63,11 +63,11 @@ export default function Project(props) {
   return (
     <Layout className={projectStyles.projectPage} gridClass={projectStyles.grid} context={props.pageContext}>
       <Helmet>
-        <title itemProp="name" lang={lang}>{frontMatter.titleTranslated[lang]}</title>
+        <title itemProp="name" lang={lang === 'cz' ? 'cs' : lang}>{frontMatter.titleTranslated[lang]}</title>
       </Helmet>
       <main>
         <div className={projectStyles.building + ' ' + projectStyles.currentBuilding} >
-          <h1 className={projectStyles.projectTitle}>{frontMatter.titleTranslated[lang]}</h1>
+          <h2 className={projectStyles.projectTitle}>{frontMatter.titleTranslated[lang]}</h2>
           {frontMatter.projectLogo ? (<div className={projectStyles.titleImg}>
             <Img fluid={frontMatter.projectLogo.childImageSharp.fluid} imgStyle={{ objectFit: 'contain' }} alt="Project Logo" />
           </div>) : null}

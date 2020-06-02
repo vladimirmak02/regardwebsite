@@ -14,9 +14,9 @@ export default function About(props) {
       <main>
         <div className={aboutStyles.aboutMain}>
           <div className={aboutStyles.aboutWrapper}>
-            <h1 className={aboutStyles.h1Title}>Page Not Found</h1>
-            <h1 className={aboutStyles.h1Title}>Požadovaná stránka nebyla nalezena.</h1>
-            <h1 className={aboutStyles.h1Title}>Страница не найдена</h1>
+            <h2 className={aboutStyles.h1Title}>Page not Found</h2>
+            <h2 className={aboutStyles.h1Title}>Požadovaná stránka nebyla nalezena.</h2>
+            <h2 className={aboutStyles.h1Title}>Страница не найдена</h2>
           </div>
         </div>
       </main>
