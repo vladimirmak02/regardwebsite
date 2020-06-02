@@ -5,7 +5,7 @@ titleTranslated:
   ru: Арго
   en: Argo
   cz: Argo
-projectLogo: ../../static/img/argo.png
+projectLogo: ../../static/img/argo-logo.png
 dateStart: 2015-02-28T23:00:00.000Z
 dateEnd: 2016-05-31T22:00:00.000Z
 area: 1234
