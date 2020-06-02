@@ -4,6 +4,9 @@ import { FaTimes } from 'react-icons/fa'
 import { FiSun, FiMoon } from 'react-icons/fi'
 import IconButton from './iconButton'
 import navbarStyles from '../styles/navbar.module.scss'
+import rusvg from '../img/ru.svg'
+import ensvg from '../img/en.svg'
+import czsvg from '../img/cz.svg'
 
 var sidebarOpen = false;
 
@@ -138,6 +141,7 @@ class Navbar extends React.Component {
         let props = this.props
         let currentLanguage = props.context.language
         let languages = { 'en': 'English', 'ru': 'Русский', 'cz': 'Čeština' }
+        let languageSVGs = [ensvg, rusvg, czsvg]
         return (
           <div>
             <div className={navbarStyles.documentCover} aria-hidden="true" role='navigation' onClick={toggleNav}></div>
@@ -160,7 +164,7 @@ class Navbar extends React.Component {
                         <input type="radio" name="language" value={lang[0]} id={`lang_${lang[0]}`} checked={lang[0] === currentLanguage ? true : false} readOnly />
                         <label htmlFor={`lang_${lang[0]}`}>
                           <Link onClick={() => localStorage.setItem("language", lang[0])} to={`/${lang[0]}${(props.context.slug === '/' ? '' : props.context.slug)}`}>
-                            <img src={`/${lang[0]}.svg`} alt="" width="32" height="18" />
+                            <img src={languageSVGs[i]} alt="" width="32" height="18" />
                             {lang[1]}
                           </Link>
                         </label>
