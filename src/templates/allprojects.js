@@ -17,7 +17,7 @@ export default function AllProjects(props) {
         <title itemProp="name" lang={lang}>{props.data.markdownRemark.frontmatter.allProjects[lang]}</title>
       </Helmet>
       <main>
-        <h1>{props.data.markdownRemark.frontmatter.allProjects[lang]}</h1>
+        <h1 className={allProjectsStyles.projectsTitle}>{props.data.markdownRemark.frontmatter.allProjects[lang]}</h1>
         <div className={allProjectsStyles.buildings}>
           {allProjectsFrontmatter.map((node, i) => {
             return (

@@ -1,25 +1,37 @@
 //--------------  IMPORT FONTS  --------------
 
 
+/* open-sans-300 - latin-ext_latin_cyrillic */
 @font-face {
-  font-family: "Open Sans";
-  src: url("../../static/fonts/OpenSans-Regular.ttf") format("truetype");
-  font-weight: normal;
+  font-family: 'Open Sans';
   font-style: normal;
-}
-
-@font-face {
-  font-family: "Open Sans";
-  src: url("../../static/fonts/OpenSans-Light.ttf") format("truetype");
   font-weight: 300;
-  font-style: normal;
+  src: local('Open Sans Light'), local('OpenSans-Light'),
+       url('../../static/fonts/open-sans-v17-latin-ext_latin_cyrillic-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../../static/fonts/open-sans-v17-latin-ext_latin_cyrillic-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-display: swap;
 }
 
+/* open-sans-regular - latin-ext_latin_cyrillic */
 @font-face {
-  font-family: "Open Sans";
-  src: url("../../static/fonts/OpenSans-ExtraBold.ttf") format("truetype");
-  font-weight: 800;
+  font-family: 'Open Sans';
   font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../../static/fonts/open-sans-v17-latin-ext_latin_cyrillic-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../../static/fonts/open-sans-v17-latin-ext_latin_cyrillic-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-display: swap;
+}
+
+/* open-sans-800 - latin-ext_latin_cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Open Sans ExtraBold'), local('OpenSans-ExtraBold'),
+       url('../../static/fonts/open-sans-v17-latin-ext_latin_cyrillic-800.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../../static/fonts/open-sans-v17-latin-ext_latin_cyrillic-800.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-display: swap;
 }
 
 $font-stack: 'Open Sans', sans-serif;

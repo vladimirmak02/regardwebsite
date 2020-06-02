@@ -34,22 +34,23 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.slug === '/' && this.props.language === 'cz') {
-      console.log(this.props)
+    let lang = this.props.context.language
+    let path = this.props.context.path
+    if (path === '/' && lang === 'cz') {
       const storedLang = localStorage.getItem("language");
       const preferredLang = window.navigator.language;
-      if (storedLang && storedLang !== this.props.language) {
+      if (storedLang && storedLang !== lang) {
         document.querySelector(`[for=lang_${storedLang}] a`).click()
       } else if (preferredLang && !storedLang) {
         switch (true) {
           case /en/.test(preferredLang):
-            if ('en' !== this.props.language) {
-              console.log(this.props.language)
+            if ('en' !== lang) {
+              console.log(lang)
               document.querySelector(`[for=lang_en] a`).click()
             }
             break;
           case /ru/.test(preferredLang):
-            if ('ru' !== this.props.language) {
+            if ('ru' !== lang) {
               document.querySelector(`[for=lang_ru] a`).click()
             }
             break;
@@ -135,7 +136,7 @@ class Navbar extends React.Component {
       render={data => {
         let frontMatter = data.file.childMarkdownRemark.frontmatter
         let props = this.props
-        let currentLanguage = props.language
+        let currentLanguage = props.context.language
         let languages = { 'en': 'English', 'ru': 'Русский', 'cz': 'Čeština' }
         return (
           <div>
@@ -144,9 +145,10 @@ class Navbar extends React.Component {
               <div className={navbarStyles.options}>
                 <div className={navbarStyles.themeSwitchWrapper}>
                   <IconButton ariaLabel="Toggle dark mode" onClick={this.toggleDark}><FiSun /></IconButton>
-                  <label className={navbarStyles.themeSwitch} htmlFor="checkbox">
-                    <input type="checkbox" id="checkbox" />
-                    <div className={navbarStyles.slider + ' ' + navbarStyles.round}></div>
+                  <label role="presentation" className={navbarStyles.themeSwitch} htmlFor="checkbox">
+                    <span style={{ display: "none" }}>Turn dark mode on or off</span>
+                    <input aria-hidden="true" type="checkbox" id="checkbox" />
+                    <div aria-hidden="true" className={navbarStyles.slider + ' ' + navbarStyles.round}></div>
                   </label>
                   <IconButton ariaLabel="Toggle light mode" onClick={this.toggleDark}><FiMoon /></IconButton>
                 </div>
@@ -157,8 +159,8 @@ class Navbar extends React.Component {
                       <div className={navbarStyles.languageSelect} key={i}>
                         <input type="radio" name="language" value={lang[0]} id={`lang_${lang[0]}`} checked={lang[0] === currentLanguage ? true : false} readOnly />
                         <label htmlFor={`lang_${lang[0]}`}>
-                          <Link onClick={() => localStorage.setItem("language", lang[0])} to={`/${lang[0]}${(props.slug === '/' ? '' : props.slug)}`}>
-                            <img src={`../../img/${lang[0]}.svg`} alt="" width="32" height="18" />
+                          <Link onClick={() => localStorage.setItem("language", lang[0])} to={`/${lang[0]}${(props.context.slug === '/' ? '' : props.context.slug)}`}>
+                            <img src={`/${lang[0]}.svg`} alt="" width="32" height="18" />
                             {lang[1]}
                           </Link>
                         </label>

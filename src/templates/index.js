@@ -90,7 +90,8 @@ export default function Home(props) {
   let lang = props.pageContext.language
   let indexFrontMatter = props.data.markdownRemark.frontmatter
   let lastBuildingFrontMatter = props.data.allMarkdownRemark.nodes[0].frontmatter
-
+  props.pageContext.path = props.path
+  console.log(props)
   return (
     <Layout className={indexStyles.indexPage} gridClass={indexStyles.grid} context={props.pageContext}>
       {lang === 'cz' ? (<Helmet><link rel="canonical" href={`/${props.language}`} /></Helmet>) : null}

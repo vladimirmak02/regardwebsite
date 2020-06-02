@@ -14,7 +14,7 @@ export default function Layout(props) {
 
         <RegardFooter language={language} />
       </div>
-      <Navbar language={language} slug={props.context.slug} />
+      <Navbar context={props.context} />
     </div>
   )
 }

@@ -17,7 +17,7 @@ export default function About(props) {
         <div className={aboutStyles.aboutMain}>
           <div className={aboutStyles.aboutWrapper}>
             <div className={aboutStyles.title}>
-              <h1>{frontmatter.heading[lang]}</h1>
+              <h1 className={aboutStyles.h1Title}>{frontmatter.heading[lang]}</h1>
               <div className={aboutStyles.logo}>
                 <Img fluid={frontmatter.companyImg.childImageSharp.fluid} alt="Regard Logo" />
               </div>

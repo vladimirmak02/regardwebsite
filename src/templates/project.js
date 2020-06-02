@@ -67,7 +67,7 @@ export default function Project(props) {
       </Helmet>
       <main>
         <div className={projectStyles.building + ' ' + projectStyles.currentBuilding} >
-          <h1>{frontMatter.titleTranslated[lang]}</h1>
+          <h1 className={projectStyles.projectTitle}>{frontMatter.titleTranslated[lang]}</h1>
           {frontMatter.projectLogo ? (<div className={projectStyles.titleImg}>
             <Img fluid={frontMatter.projectLogo.childImageSharp.fluid} imgStyle={{ objectFit: 'contain' }} alt="Project Logo" />
           </div>) : null}

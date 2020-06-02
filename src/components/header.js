@@ -37,12 +37,12 @@ export default function RegardHeader(props) {
               {
                 "@context": "https://schema.org",
                 "@type": "Organization",
-                "url": "regard.cz",
-                "logo": "${data.markdownRemark.frontmatter.companyImg.publicURL}"
+                "url": "https://www.regard.cz",
+                "logo": "https://www.regard.cz${data.markdownRemark.frontmatter.companyImg.publicURL}"
               }
             `}</script>
           </Helmet>
-          <Link to={`/${props.language}`}>REGARD</Link>
+          <h1><Link to={`/${props.language}`}>REGARD</Link></h1>
           <nav>
             <IconButton className="nav-btn" id="openNav" onClick={toggleNav} ariaLabel="Open navigation menu"  ><FaBars /></IconButton>
           </nav>

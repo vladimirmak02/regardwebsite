@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet'
 
 export default function About(props) {
   props.pageContext.language = 'cz'
-  props.pageContext.slug = '/'
+  props.pageContext.slug = '/404'
   return (
     <Layout className={aboutStyles.aboutPage} gridClass={aboutStyles.grid} context={props.pageContext}>
       <Helmet>
@@ -14,9 +14,9 @@ export default function About(props) {
       <main>
         <div className={aboutStyles.aboutMain}>
           <div className={aboutStyles.aboutWrapper}>
-            <h1>Page Not Found</h1>
-            <h1>Požadovaná stránka nebyla nalezena.</h1>
-            <h1>Страница не найдена</h1>
+            <h1 className={aboutStyles.h1Title}>Page Not Found</h1>
+            <h1 className={aboutStyles.h1Title}>Požadovaná stránka nebyla nalezena.</h1>
+            <h1 className={aboutStyles.h1Title}>Страница не найдена</h1>
           </div>
         </div>
       </main>
