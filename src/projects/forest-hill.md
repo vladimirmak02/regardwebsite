@@ -5,7 +5,7 @@ titleTranslated:
   en: Forest Hill
   cz: Forest Hill
   ru: Форест Хил
-projectLogo: ../../static/img/forest.png
+projectLogo: ../../static/img/forest-hill-logo.png
 dateStart: 2013-02-28T23:00:00.000Z
 dateEnd: 2014-05-31T22:00:00.000Z
 area: 122
