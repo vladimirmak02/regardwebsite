@@ -32,6 +32,39 @@
     font-weight: 200;
     line-height: 2em;
   }
+
+  .genericHeadings{
+    line-height: auto;
+    text-align: left;
+    ul {
+      list-style-type: circle;
+      list-style-position: inside;
+    }
+    h1{
+      font-size:32px;
+      line-height: 1.4em;
+    }
+    h2{
+      font-size:24px;
+      line-height: 1.4em;
+    }
+    h3{
+      font-size:20px;
+      line-height: 1.4em;
+    }
+    h4{
+      font-size:18px;
+      line-height: 1.4em;
+    }
+    h5{
+      font-size:18px;
+      line-height: 1.4em;
+    }
+    h6{
+      font-size:16px;
+      line-height: 1.4em;
+    }
+  }
   @media only screen and (min-width: 1024px) {
     max-width: 800px;
     margin: 0 auto;

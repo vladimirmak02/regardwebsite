@@ -2,7 +2,7 @@
   color: var(--light-text-color);
   grid-area: footer;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: space-around;
   align-items: center;
   padding: 3rem;
@@ -84,6 +84,15 @@
     text-align: left;
     div{
       white-space: nowrap
+    }
+    .aboutShort{
+      flex: 1 0;
+    }
+    .legalInfo{
+      opacity: 0.7;
+      a{
+      margin-left: 1em;
+      }
     }
   }
   p{

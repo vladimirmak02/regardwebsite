@@ -150,7 +150,7 @@ class Navbar extends React.Component {
                   <IconButton ariaLabel="Toggle dark mode" onClick={this.toggleDark}><FiSun /></IconButton>
                   <label role="presentation" className={navbarStyles.themeSwitch} htmlFor="checkbox">
                     <span style={{ display: "none" }}>Turn dark mode on or off</span>
-                    <input aria-hidden="true" tabindex="-1" type="checkbox" id="checkbox" />
+                    <input aria-hidden="true" tabIndex="-1" type="checkbox" id="checkbox" />
                     <div aria-hidden="true" className={navbarStyles.slider + ' ' + navbarStyles.round}></div>
                   </label>
                   <IconButton ariaLabel="Toggle light mode" onClick={this.toggleDark}><FiMoon /></IconButton>

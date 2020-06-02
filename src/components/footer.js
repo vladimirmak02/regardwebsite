@@ -62,7 +62,10 @@ export default function RegardHeader(props) {
         <footer className={footerStyles.regardFooter}>
           <div className={footerStyles.collumn}>
             <h3><Link to={`/${lang}/about`}>{aboutFrontMatter.heading[lang]}</Link></h3>
-            <p>{aboutFrontMatter.shortDesc[lang]}</p>
+            <p className={footerStyles.aboutShort}>{aboutFrontMatter.shortDesc[lang]}</p>
+            <div className={footerStyles.legalInfo}>
+              <span>{aboutFrontMatter.copyrightInfo[lang] + ` 1999-${new Date().getFullYear()}`}<Link to={`/privacypolicy`}>{`Privacy Policy`}</Link></span>
+            </div>
           </div>
           <div className={footerStyles.collumn}>
             <h3>{contactFrontMatter.contactText[lang]}</h3>
