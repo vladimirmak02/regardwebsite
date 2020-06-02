@@ -1,6 +1,6 @@
 ---
 home:
-  en: Home
+  en: Homepage
   cz: Hlavní stránka
   ru: Главная страница
 projects:
