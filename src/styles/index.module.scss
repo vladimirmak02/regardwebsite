@@ -36,22 +36,22 @@ main{
   font-weight: lighter;
   position: relative;
   margin-top: 0;
-  width: 80%;
+  width: 90%;
   left: 0%;
+  font-size: 1.6rem;
   h2{
-    font-size: 1.6rem; 
+    // font-size: 1.6rem; 
     margin-bottom: 0.5rem; 
     line-height: 1.4em;
   }
   button {
-    white-space: nowrap;
     background-color: var(--complementary-color);
     color: var(--font-color);
     border: none;
     border-radius: 2rem;
     padding: 1rem 1.5rem 1rem 1.5rem;
     transition: var(--background-transition), opacity 0.2s;
-    font-size: 1.6rem;
+    // font-size: 1.6rem;
     cursor: pointer;
     font-weight: lighter;
     display: flex;
@@ -67,7 +67,7 @@ aside {
   grid-area: aside;
   align-self: start;
   position: relative;
-  margin-top: 5%;
+  margin-top: 10%;
   left: 0%;
   width: 100%;
 }
@@ -78,10 +78,10 @@ aside {
   svg{
   fill: var(--primary-light);
   transition: fill 0.3s;
-  width: 120%;
+  width: 140%;
   position: relative;
   top: 0%;
-  left: -10%;
+  left: -20%;
   z-index: 1;
   }
 }
@@ -120,15 +120,19 @@ aside {
   
   &> a:first-child { //latest project title
     text-align: left; 
-    font-size: 1.45rem; 
-    
-    line-height: 2em;
+    font-size: 1.45rem;
     font-weight: lighter; 
-    align-self: flex-start;
-    padding: 0.3em 0.5em 2em 0.3em;
-    margin: -0.3em -0.5em -2em -0.3em;
-    background-color: var(--primary-light);
-    border-radius: 3.5rem;
+    @media only screen and (max-width: 1023px) { //only for mobile
+      position: absolute;
+      top: -1.5em;
+    }
+    
+    // line-height: 2em;
+    // align-self: flex-start;
+    // padding: 0.3em 0.5em 2em 0.3em;
+    // margin: -0.3em -0.5em -2em -0.3em;
+    // background-color: var(--primary-light);
+    // border-radius: 3.5rem;
   }
   h3{
     font-size: 1.45rem;
@@ -141,7 +145,8 @@ aside {
   main {
     width: 70%;
     left: 0%;
-    margin-top: 25%;
+    margin-top: 15%;
+    font-size: 2.3em;
   }
 
   aside {

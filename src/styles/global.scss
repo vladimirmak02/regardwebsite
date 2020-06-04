@@ -47,7 +47,7 @@ $font-stack: 'Open Sans', sans-serif;
   --link-color: #0366d6;
   --bg-color: #fff;
   --light-text-color: #fff;
-  --complementary-color: #FFD8A3;
+  --complementary-color: #FFCA80;
   --background-transition: background-color 0.3s ease-out;
 }
 
@@ -101,7 +101,10 @@ main{
 }
 
 // Make bullets at bottom of slideshow white on active (as doesn't work with CSS modules)
-.glide__bullet--active{background-color:#eee !important}
+.glide__bullet--active{
+  background-color:#eee !important;
+  border-color: var(--primary-color) !important;
+}
 
 //----------------------  CSS RESET  ----------------------
 
