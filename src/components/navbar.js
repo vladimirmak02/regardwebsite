@@ -43,17 +43,19 @@ class Navbar extends React.Component {
       const storedLang = localStorage.getItem("language");
       const preferredLang = window.navigator.language;
       if (storedLang && storedLang !== lang) {
-        document.querySelector(`[for=lang_${storedLang}] a`).click()
+        window.location.replace(`/${storedLang}`)
       } else if (preferredLang && !storedLang) {
         switch (true) {
           case /en/.test(preferredLang):
             if ('en' !== lang) {
-              document.querySelector(`[for=lang_en] a`).click()
+              localStorage.setItem("language", "en")
+              window.location.replace('/en')
             }
             break;
           case /ru/.test(preferredLang):
             if ('ru' !== lang) {
-              document.querySelector(`[for=lang_ru] a`).click()
+              localStorage.setItem("language", "ru")
+              window.location.replace('/en')
             }
             break;
           default:
