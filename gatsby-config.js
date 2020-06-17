@@ -124,6 +124,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
       options: {
+        printRejected: true,
+        whitelist: ['glide__bullet--active'],
       },
     }, // must be after other CSS plugins
     'gatsby-plugin-netlify', // make sure to keep it last in the array
