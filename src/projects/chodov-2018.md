@@ -12,14 +12,17 @@ area: 2998
 website: ""
 video: https://www.youtube.com/embed/sGSahS4I8_c
 address: 2332/32 Milínská, Praha 11-Chodov
-mainImage: ../../static/img/Chodov 2018 01.jpg
+mainImage: ../../static/img/imgp1196.jpg
 images:
-  - ../../static/img/Chodov 2018 03.jpg
-  - ../../static/img/20201210_101116.jpg
-  - ../../static/img/Chodov 2018 05.jpg
-  - ../../static/img/20201210_101633.jpg
-  - ../../static/img/20201210_101406.jpg
+  - ../../static/img/imgp1196.jpg
+  - ../../static/img/imgp1208.jpg
+  - ../../static/img/imgp1217.jpg
+  - ../../static/img/k1024_img_20210121_122807.jpg
+  - ../../static/img/k1024_schodiste.jpg
+  - ../../static/img/k1024_img_20210121_130304.jpg
+  - ../../static/img/d81_7716.jpg
   - ../../static/img/Chodov 2018 02.jpg
+  - ../../static/img/Chodov 2018 03.jpg
   - ../../static/img/Chodov 2018 06.jpg
 shortDesc:
   en: Modern living for people who want to live in Prague
