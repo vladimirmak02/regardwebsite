@@ -11,7 +11,7 @@ role:
   en: Director
   ru: Управляющий
   cz: Jednatel
-phone: +420 774 800 000
-email: dl@regard.cz
+phone: +420 776 443 371
+email: info@regard.cz
 address: U Panské zahrady 834, Praha 5
 ---
