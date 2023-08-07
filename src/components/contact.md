@@ -4,9 +4,9 @@ contactText:
   ru: Контакты
   cz: Kontakty
 name:
-  ru: Дмитрий Левицкий
-  en: Dmitry Levitskiy
-  cz: Dmitry Levitskiy
+  ru: Максим Макаров
+  en: Maxim Makarov
+  cz: Maxim Makarov
 role:
   en: Director
   ru: Управляющий
