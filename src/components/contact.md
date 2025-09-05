@@ -13,5 +13,5 @@ role:
   cz: Jednatel
 phone: +420 776 443 371
 email: info@regard.cz
-address: U Panské zahrady 834, Praha 5
+address: Peroutkova 531/81, Praha 5
 ---
