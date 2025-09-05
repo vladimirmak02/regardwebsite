@@ -52,12 +52,6 @@ class Navbar extends React.Component {
               window.location.replace('/en')
             }
             break;
-          case /ru/.test(preferredLang):
-            if ('ru' !== lang) {
-              localStorage.setItem("language", "ru")
-              window.location.replace('/en')
-            }
-            break;
           default:
             break;
         }
@@ -141,7 +135,7 @@ class Navbar extends React.Component {
         let frontMatter = data.file.childMarkdownRemark.frontmatter
         let props = this.props
         let currentLanguage = props.context.language
-        let languages = { 'en': 'English', 'ru': 'Русский', 'cz': 'Čeština' }
+        let languages = { 'en': 'English', 'cz': 'Čeština' }
         let languageSVGs = [ensvg, rusvg, czsvg]
         return (
           <div>
