@@ -136,7 +136,7 @@ class Navbar extends React.Component {
         let props = this.props
         let currentLanguage = props.context.language
         let languages = { 'en': 'English', 'cz': 'Čeština' }
-        let languageSVGs = [ensvg, rusvg, czsvg]
+        let languageSVGs = [ensvg, czsvg]
         return (
           <div>
             <div className={navbarStyles.documentCover} aria-hidden="true" role='navigation' onClick={toggleNav}></div>
