@@ -5,4 +5,4 @@
   package = "netlify-plugin-gatsby-cache"
 
 [build.environment]
-PYTHON_VERSION = "3.10"
+  PYTHON_VERSION = "3.10"
