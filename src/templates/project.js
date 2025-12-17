@@ -36,7 +36,7 @@ class Slideshow extends React.Component {
       <div className={glideStyles.glide + ' ' + projectStyles.carousel}>
         <div className={glideStyles.glide__track} data-glide-el="track">
           <ul className={glideStyles.glide__slides}>
-            {frontMatter.video ? (<li className={glideStyles.glide__slide}><div><iframe width="560" height="349" src={frontMatter.video + '?rel=0'} title="Building Video" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe></div></li>) : null}
+            {frontMatter.video ? (<li className={glideStyles.glide__slide}><div><iframe width="560" height="349" src={frontMatter.video + '?rel=0'} title="Building Video" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowFullScreen></iframe></div></li>) : null}
             <li className={glideStyles.glide__slide}><Img imgStyle={{ objectFit: 'contain' }} fluid={frontMatter.mainImage.childImageSharp.fluid} alt="Main Image" /></li>
             {frontMatter.images.map((image, i) => {
               return (
